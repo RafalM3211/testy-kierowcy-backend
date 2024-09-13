@@ -1,7 +1,7 @@
 @echo off
 setlocal enabledelayedexpansion
 
-set "baseDir=C:\projekty\driving-licence-quiz\src\server\db\media"
+set /p baseDir="Enter the base directory path: "
 
 for %%F in ("%baseDir%\*.wmv") do (
     set "filename=%%~nF"

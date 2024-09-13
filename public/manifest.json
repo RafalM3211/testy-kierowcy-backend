@@ -1,8 +1,0 @@
-{
-  "short_name": "TestyKierowcy",
-  "name": "Testy Kierowcy",
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#fb8c00",
-  "background_color": "#ffffff"
-}

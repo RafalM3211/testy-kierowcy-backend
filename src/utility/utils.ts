@@ -1,5 +1,4 @@
-import { QuestionMode } from "../components/patterns/Question/types";
-import type { Answer, Question } from "../types/globalTypes";
+import type { Question } from "../types/globalTypes";
 
 export function trimText(text: string, limit: number) {
   let returnedText = text;
@@ -13,21 +12,6 @@ export function isJpgImage(media: Question["media"]) {
   const name = String(media);
   const extension = name.slice(name.lastIndexOf(".") + 1);
   return extension === "jpg";
-}
-
-export function getColorForAnswerButton(
-  buttonValue: Exclude<Answer, null>,
-  correctAnswer: Exclude<Answer, null> | undefined,
-  chosenAnswer: Answer,
-  mode: QuestionMode
-) {
-  if (correctAnswer !== undefined && mode === "preview") {
-    const isButtonCorrectAnswer = buttonValue === correctAnswer;
-    const isButtonCkecked = buttonValue === chosenAnswer;
-    if (isButtonCorrectAnswer) return "success";
-    if (!isButtonCorrectAnswer && isButtonCkecked) return "error";
-  }
-  return "primary";
 }
 
 export function withoutProperty<O extends object, K extends keyof O>(

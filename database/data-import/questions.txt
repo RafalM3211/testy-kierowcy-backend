@@ -212,24 +212,17 @@
 12562|Czy w tej sytuacji musisz umożliwić włączenie się do ruchu pojazdowi ciężarowemu?|0|basic|3|1841ztV.mp4|\N|\N|\N
 12564|Czy w tej sytuacji masz obowiązek zatrzymać pojazd przed przejazdem kolejowym?|0|basic|3|1842ztV.mp4|\N|\N|\N
 12575|Czy w tej sytuacji wolno kontynuować jazdę lewym pasem jeżeli prawy pas jest wolny?|0|basic|2|1850ztV.mp4|\N|\N|\N
-12605|Czy w tej sytuacji należy zachować ostrożność i bezpieczny odstęp od wymijanego pojazdu?|1|basic|2|1868ztV.mp4|\N|\N|\N
 12618|Czy za tym znakiem wolno Ci zwiększyć prędkość do 130 km/h?|0|basic|1|1875ztV.mp4|\N|\N|\N
 12640|Czy w tak oznakowanym miejscu wolno Ci zmienić pas ruchu?|0|basic|2|1887ztV.mp4|\N|\N|\N
 12652|Czy w tej sytuacji musisz zatrzymać się przed przejściem dla pieszych?|0|basic|3|1897ztV.mp4|\N|\N|\N
-12714|Czy za tym znakiem należy spodziewać się trzech niebezpiecznych zakrętów, z których wszystkie mogą być w lewo?|1|basic|2|1928ztV.mp4|\N|\N|\N
 12726|Czy pole widzenie zwiększa się wraz z malejącą prędkością jazdy?|1|basic|2|1934ztV.mp4|\N|\N|\N
-12737|Czy ten znak ostrzega o możliwości wystąpienia gołoledzi na jezdni?|1|basic|3|1937ztV.mp4|\N|\N|\N
-12741|Czy ten znak ostrzega o niebezpiecznym zakręcie w prawo?|1|basic|2|1939ztV.mp4|\N|\N|\N
 12779|Czy wyprzedzając rowerzystę musisz zachować szczególną ostrożność?|1|basic|3|1952ztV.mp4|\N|\N|\N
 12786|Czy na najbliższym skrzyżowaniu musisz ustąpić pierwszeństwa pojazdom nadjeżdżającym z lewej strony?|1|basic|2|1955ztV.mp4|\N|\N|\N
 12825|Czy w tej sytuacji masz prawo wyprzedzić pojazd szynowy?|1|basic|3|1970ztV.mp4|\N|\N|\N
 12826|Czy w tej sytuacji zabronione jest wyprzedzanie pojazdu szynowego?|0|basic|3|1970ztV.mp4|\N|\N|\N
-12832|Czy zbliżając się do przejścia dla pieszych masz obowiązek obserwować jego otoczenie?|1|basic|3|1974ztV.mp4|\N|\N|\N
 12890|Czy prędkość jazdy i odstęp od innych uczestników ruchu drogowego należy dostosować do stanu nawierzchni?|B|specialized|3|Bb1_5005pic-zt.jpg|Tak, ale tylko w obszarze zabudowanym.|Tak, ponieważ stan nawierzchni ma istotny wpływ na drogę hamowania.|Tak, ale tylko podczas opadów śniegu.
 12939|Czy za widocznymi znakami wolno zwiększyć prędkość do 90 km/h?|B|specialized|3|Ba1_6010ztVpic.jpg|Tak, ponieważ wjeżdżasz na drogę ekspresową.|Tak, ponieważ opuszczasz obszar zabudowany.|Nie, ponieważ tabliczka wskazuje, że na drogę ekspresową wjeżdżasz dopiero za 450 metrów.
-12942|Czy prędkość dopuszczalna 50 km/h obowiązuje na obszarze zabudowanym przez całą dobę?|A|specialized|3|Ba1_6011ztVpic.jpg|Tak.|Nie, tylko od godziny 5:00 do 23:00.|Nie, tylko od zmierzchu do świtu.
 13005|Czy zbliżając się do przejścia dla pieszych, masz obowiązek obserwować jego otoczenie?|1|basic|3|1919ztVX.mp4|\N|\N|\N
-13006|Czy w tej sytuacji wolno Ci kontynuować jazdę bez zatrzymania przed przejściem dla pieszych?|0|basic|3|1990ztV.mp4|\N|\N|\N
 13019|Czy sygnalizacja świetlna na przejściu dla pieszych zwalnia Cię z konieczności zachowania szczególnej ostrożności?|0|basic|3|Wb2_2015ztVpic.jpg|\N|\N|\N
 13024|Czy w tej sytuacji masz prawo kontynuować jazdę bez zwracania uwagi na zachowanie pieszych?|0|basic|3|Wb2_2017ztVpic.jpg|\N|\N|\N
 13034|Czy w widocznej sytuacji z tego pasa ruchu dopuszczalne jest tylko skręcanie w lewo?|0|basic|3|Slajd385_cen_1024x576.jpg|\N|\N|\N
@@ -244,45 +237,30 @@
 13060|Z jaką maksymalną prędkością kierującemu samochodem osobowym z przyczepą wolno jechać po tej drodze poza obszarem zabudowanym?|A|specialized|3|mw11n.jpg|80 km/h.|100 km/h.|90 km/h.
 13063|Z jaką prędkością wolno kontynuować jazdę samochodem osobowym za tymi znakami?|C|specialized|3|mw22.jpg|30 km/h do najbliższego skrzyżowania a następnie 50 km/h.|30 km/h do tablicy z nazwą początku miejscowości a następnie 90 km/h.|30 km/h na całym odcinku drogi biegnącej na obszarze zabudowanym.
 13064|Jaka jest dopuszczalna prędkość czterokołowca na obszarze zabudowanym?|A|specialized|3|\N|50 km/h bez względu na jego dopuszczalną masę całkowitą.|40 km/h, jeżeli jego dopuszczalna masa całkowita przekracza 3,5 t.|20 km/h.
-13067|Czy w tej sytuacji masz obowiązek ustąpienia pierwszeństwa pieszemu?|1|basic|3|4 dod.2021.mp4|\N|\N|\N
-13068|Czy w tej sytuacji masz obowiązek zmniejszyć prędkość?|0|basic|3|1 dod.2021.mp4|\N|\N|\N
-13069|Czy w tej sytuacji wystarczy, że zachowasz wyłącznie szczególną ostrożność?|0|basic|3|2 dod.2021.mp4|\N|\N|\N
 13070|Czy w tej sytuacji masz obowiązek zmniejszenia prędkości?|0|basic|3|2-9.2021.mp4|\N|\N|\N
 13071|Czy w tej sytuacji masz obowiązek zachować jedynie ostrożność?|0|basic|3|2-9.2021.mp4|\N|\N|\N
 13072|Czy w tej sytuacji, zbliżając się do przejścia dla pieszych, masz obowiązek zmniejszyć prędkość?|0|basic|3|3-9.2021.mp4|\N|\N|\N
 13073|Czy w tej sytuacji, przy niedziałającej sygnalizacji świetlnej, masz obowiązek ustąpienia pierwszeństwa pieszemu z lewej strony?|1|basic|3|15-9.2021.jpg|\N|\N|\N
 13074|Czy w tej sytuacji, nie widząc innych uczestników ruchu drogowego, jesteś zwolniony z obowiązku zachowania szczególnej ostrożności?|0|basic|3|5-9.2021.mp4|\N|\N|\N
-13075|Czy w tej sytuacji masz podstawy do zastosowania tzw. ograniczonego zaufania wobec kierującego pojazdem wjeżdżającym na skrzyżowanie z prawej strony?|0|basic|3|5-9.2021 2xbis.mp4|\N|\N|\N
 13076|Czy w tej sytuacji dozwolony jest przejazd przez skrzyżowanie bez zmniejszenia prędkości pojazdu?|1|basic|3|6-9.2021.mp4|\N|\N|\N
 13077|Czy w tej sytuacji masz obowiązek zmniejszenia prędkości?|0|basic|3|6-9.2021.mp4|\N|\N|\N
 13078|Czy w tej sytuacji możesz przyspieszyć, jeżeli nie przekroczysz prędkości dozwolonej na tej drodze?|1|basic|3|6-9.2021.mp4|\N|\N|\N
 13079|Czy w tej sytuacji masz podstawy sądzić, że zmiana sygnałów świetlnych nadawanych przez sygnalizatory nastąpi w krótkim czasie?|1|basic|3|6-9.2021.mp4|\N|\N|\N
-13080|Czy w tej sytuacji znak "ustąp pierwszeństwa" ustawiony przed skrzyżowaniem ma zastosowanie?|0|basic|3|5-9.2021 bis.mp4|\N|\N|\N
 13081|Czy w tej sytuacji skręcając w lewo na skrzyżowaniu, masz obowiązek ustąpić pierwszeństwa pojazdowi jadącemu z kierunku przeciwnego na wprost?|0|basic|3|7-9.2021.mp4|\N|\N|\N
 13082|Czy w tej sytuacji przejeżdżając na wprost przez skrzyżowanie, możesz zrezygnować z zachowania szczególnej ostrożności?|0|basic|3|7-9.2021.mp4|\N|\N|\N
 13083|Czy w tej sytuacji wolno Ci zawrócić na najbliższym skrzyżowaniu?|1|basic|3|7-9.2021.mp4|\N|\N|\N
 13084|Czy na tym skrzyżowaniu dozwolone jest wyprzedzanie innych pojazdów?|1|basic|3|3-9.2021.mp4|\N|\N|\N
-13085|Czy w tej sytuacji wolno Ci zawrócić pod warunkiem upewnienia się, że nie utrudnisz ruchu innym jego uczestnikom?|0|basic|3|3-9.2021 bis.mp4|\N|\N|\N
 13086|Czy widoczny sygnał żółty zawsze oznacza zakaz wjazdu za sygnalizator?|0|basic|3|16-9.2021.jpg|\N|\N|\N
 13087|Jaka jest maksymalna dopuszczalna prędkość samochodu osobowego poruszającego się po tej drodze?|C|specialized|3|mw285.jpg|120km/h.|100 km/h.|90 km/h.
 13088|Z jaką maksymalną dopuszczalną prędkością możesz holować inny pojazd?|B|specialized|3|\N|50 km/h w obszarze zabudowanym.|60 km/h poza obszarem zabudowanym.|80 km/h na drodze dwujezdniowej o co najmniej dwóch pasach przeznaczonych dla każdego kierunku ruchu.
 13089|Z jaką maksymalną prędkością wolno kontynuować jazdę na wprost kierując samochodem ciężarowym o dmc wynoszącej 3 tony?|B|specialized|3|mw13.jpg|50 km/h.|90 km/h.|70 km/h .
 13090|Czy w tej sytuacji, kiedy na sygnalizatorze nadawane jest sygnał żółty migający, powinieneś ustąpić pierwszeństwa pieszemu z lewej strony?|1|basic|3|15-9.2021.jpg|\N|\N|\N
 13091|Czy w tej sytuacji, zbliżając się do skrzyżowania, jesteś zwolniony z obowiązku zachowania szczególnej ostrożności?|0|basic|3|5-9.2021.mp4|\N|\N|\N
-13092|Czy w przedstawionej sytuacji należy zachować szczególną ostrożność?|0|basic|3|8-9.2021.mp4|\N|\N|\N
-13093|Czy przejeżdżając obok widocznego przystanku tramwajowego jesteś zwolniony z obowiązku zachowania szczególnej ostrożności?|0|basic|3|4-9.2021.mp4|\N|\N|\N
-13094|Czy podczas cofania, przy braku innych uczestników ruchu na tym odcinku drogi, możesz zrezygnować z zachowania szczególnej ostrożności?|0|basic|3|9-9.2021.mp4|\N|\N|\N
 13095|Czy w tej sytuacji możesz nie zachowywać szczególnej ostrożności?|1|basic|3|10-9.2021.mp4|\N|\N|\N
 13096|Czy w tej sytuacji powinieneś zmniejszyć prędkość i zachować szczególną ostrożność?|0|basic|3|10-9.2021.mp4|\N|\N|\N
-13097|Czy w tej sytuacji powinieneś zachować szczególną ostrożność i zmniejszyć prędkość?|0|basic|3|11-9.2021.mp4|\N|\N|\N
-13098|Czy w tej sytuacji jadąc w tunelu za pojazdem szynowym, masz obowiązek zachować szczególną ostrożność?|0|basic|3|12-9.2021.mp4|\N|\N|\N
 13099|Czy w tej sytuacji powinieneś zachować ograniczone zaufanie wobec wyprzedzanego rowerzysty, który nie trzyma rąk na kierownicy?|1|basic|3|13-9.2021.mp4|\N|\N|\N
-13108|Czy w tej sytuacji masz obowiązek zatrzymać pojazd?|1|basic|3|GM_W16(318,319).mp4|\N|\N|\N
 13109|Czy w tej sytuacji możesz kontynuować jazdę?|0|basic|3|GM_W16(318,319)NN.mp4|\N|\N|\N
-13111|Czy w tej sytuacji masz obowiązek zatrzymać pojazd w celu ustąpienia pierwszeństwa pieszemu?|0|basic|3|GM_W16_321_N.mp4|\N|\N|\N
 13112|Czy w tej sytuacji musisz ograniczyć zaufanie do pieszego?|1|basic|3|GM_W16_(322)N.mp4|\N|\N|\N
-13113|Czy w tej sytuacji masz obowiązek powstrzymać się od ruchu w celu ustąpienia pierwszeństwa pieszemu wchodzącemu na przejście?|1|basic|3|GM_W16(323).mp4|\N|\N|\N
-13114|Czy w tej sytuacji masz obowiązek zatrzymać pojazd w celu ustąpienia pierwszeństwa pieszemu?|1|basic|3|GM_W16(324).mp4|\N|\N|\N
 13116|Czy za tym znakiem "strefa zamieszkania" urządzenia wymuszające powolną jazdę mogą nie być oznakowane znakami ostrzegawczymi?|1|basic|1|F07_strefa_zamieszkania_i_progi.mp4|\N|\N|\N
 13117|Czy ten znak drogowy uprzedza o początku odcinka drogi, na którym średnia prędkość jazdy jest  kontrolowana i rejestrowana przez stacjonarne urządzenie rejestrujące?|1|basic|1|F18_pomiar_predkosci.mp4|\N|\N|\N
 13119|Czy ten znak oznacza wjazd do strefy czystego transportu?|1|basic|1|znak_D54.jpg|\N|\N|\N
@@ -294,23 +272,13 @@
 13128|Czy ten znak oznacza, że przejeżdżasz przed kierującym zbliżającym się z kierunku przeciwnego?|1|basic|1|F21_znak_informacyjny_strzalki.mp4|\N|\N|\N
 13129|Czy ten znak drogowy uprzedza o miejscu, w którym prędkość jazdy jest kontrolowana i rejestrowana przez stacjonarne urządzenie rejestrujące?|0|basic|1|F18_pomiar_predkosci.mp4|\N|\N|\N
 13130|Czy kierujący zespołem pojazdów o rzeczywistej masie całkowitej powyżej 3,5 tony jest uprzedzany o zakazie występującym na wskazanej drodze bezpośrednio za skrzyżowaniem?|1|basic|1|F23_znaki_uprzedzajace_o_zakazie.mp4|\N|\N|\N
-13131|Czy w tej sytuacji masz obowiązek ustąpić pierwszeństwa pieszemu?|0|basic|3|TF06a_2ujecie.mp4|\N|\N|\N
 13132|Czy w przedstawionej sytuacji masz obowiązek ustąpić pierwszeństwa pieszemu?|0|basic|3|F06_oczekujacy_na_przejsciu.mp4|\N|\N|\N
-13135|Czy w przedstawionej sytuacji doszło do nieustąpienia pierwszeństwa pieszemu?|0|basic|3|TF06c_2ujecie.mp4|\N|\N|\N
-13136|Czy w przedstawionej sytuacji masz obowiązek ustąpić pierwszeństwa pieszemu?|0|basic|3|TF06b_2ujecie.mp4|\N|\N|\N
 13137|Czy w przedstawionej sytuacji masz obowiązek ustąpić pierwszeństwa pieszemu?|1|basic|3|F08_pieszy_na_jezdni.mp4|\N|\N|\N
-13138|Czy w tej sytuacji masz obowiązek ustąpić pierwszeństwa pieszemu?|1|basic|3|TF08b_2ujecie.mp4|\N|\N|\N
-13140|Czy w tej sytuacji masz obowiązek zatrzymać pojazd i umożliwić pieszemu przejście na drugą stronę drogi?|0|basic|3|TF08a_2ujecie.mp4|\N|\N|\N
-13141|Czy w tej sytuacji skręcając w prawo do posesji, masz obowiązek ustąpić pierwszeństwa pieszemu?|1|basic|3|TF10_2ujecie.mp4|\N|\N|\N
 13142|Czy w przedstawionej sytuacji możesz wyprzedzić pojazd z prawej strony?|1|basic|3|F25a_wyprzedzanie_z_prawej_i_lewej.mp4|\N|\N|\N
 13143|Czy w przedstawionej sytuacji możesz wykonać manewr wyprzedzania?|0|basic|3|F11_wyprzedzanie_przed_przejsciem.mp4|\N|\N|\N
 13144|Czy na tym skrzyżowaniu możesz wyprzedzić pojazd z prawej strony?|1|basic|3|F20_wyprzedzanie_skrzyzowanie.mp4|\N|\N|\N
 13145|Czy w przedstawionej sytuacji możesz wyprzedzić z lewej lub prawej strony pojazd jadący przed Tobą?|1|basic|3|F25a_wyprzedzanie_z_prawej_i_lewej.mp4|\N|\N|\N
 13146|Czy podczas wyprzedzania hulajnogi elektrycznej masz obowiązek zachować odstęp nie mniejszy niż jeden metr?|1|basic|3|GM-W12_457.mp4|\N|\N|\N
-13147|Czy w tej sytuacji musisz powstrzymać się od wyprzedzania?|1|basic|3|GM-W12_458.mp4|\N|\N|\N
-13148|Czy w tej sytuacji możesz wyprzedzać?|0|basic|3|GM-W12_459.mp4|\N|\N|\N
-13149|Czy w tej sytuacji wolno Ci wyprzedzić rowerzystę?|0|basic|3|GM_W12_(460)N.mp4|\N|\N|\N
-13150|Czy w przedstawionej sytuacji możesz wyprzedzić pojazd z prawej strony?|1|basic|3|TF19_2ujecie.mp4|\N|\N|\N
 13152|Czy w tej sytuacji możesz kontynuować jazdę?|0|basic|3|GM_W9-1.mp4|\N|\N|\N
 13153|Czy w tej sytuacji masz obowiązek powstrzymać się od ruchu?|1|basic|3|GM_W9-1.mp4|\N|\N|\N
 13154|Czy w tej sytuacji możesz kontynuować jazdę?|1|basic|3|GM_W9-2.mp4|\N|\N|\N
@@ -323,10 +291,6 @@
 13161|Czy w tej sytuacji musisz oczekiwać na opuszczenie przejścia dla pieszych przez dzieci i osobę kierującą ruchem?|1|basic|3|GM_W9 - 3.mp4|\N|\N|\N
 13162|Czy w tej sytuacji musisz się zatrzymać?|1|basic|3|GM_W9-4.mp4|\N|\N|\N
 13163|Czy w tej sytuacji wolno Ci kontynuować jazdę?|1|basic|3|GM_W9-4.mp4|\N|\N|\N
-13165|Czy wyprzedzając rowerzystę masz obowiązek zachować odstęp nie mniejszy niż jeden metr?|1|basic|3|GM_W12_(467)N.mp4|\N|\N|\N
-13166|Czy w tej sytuacji możesz rozpocząć wyprzedzanie?|0|basic|3|Klip7 00_00_05-00_00_13~1.mp4|\N|\N|\N
 13167|Czy w tej sytuacji masz obowiązek sygnalizować manewr wyprzedzania z prawej strony?|0|basic|3|GM_W12_(471,469) N.mp4|\N|\N|\N
-13168|Czy w tej sytuacji powstrzymasz się od wyprzedzania?|1|basic|3|GM_W12_(470) N.mp4|\N|\N|\N
 13169|Czy w tej sytuacji możesz przejechać obok rowerzysty z prawej strony?|1|basic|3|GM_W12_(471,469) N.mp4|\N|\N|\N
 13170|Czy wyprzedzając hulajnogę elektryczną masz obowiązek utrzymać odstęp nie mniejszy niż 1 m?|1|basic|3|GM-W12_457.mp4|\N|\N|\N
-13171|Czy masz obowiązek ustąpić pierwszeństwa pieszemu wchodzącemu na przejście?|1|basic|3|GM_W16_(340)N.mp4|\N|\N|\N

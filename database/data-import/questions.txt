@@ -77,7 +77,7 @@
 4579|Jesteś uczestnikiem lub świadkiem wypadku drogowego. Jak należy postąpić, gdy na poszkodowanym pali się ubranie?|A|specialized|3|\N|Przewrócić osobę na ziemię i ugasić ogień poprzez przykrycie np. kurtką, kocem, płaszczem.|Poczekać na przyjazd Straży Pożarnej.|Ugasić ogień gaśnicą.
 4592|Która z wymienionych awarii, uniemożliwia używanie samochodu osobowego w ruchu drogowym?|C|specialized|1|\N|Niedziałające czujniki parkowania.|Niedziałająca klimatyzacja.|Niedziałające światła hamowania "stop".
 4593|Które z wymienionych działań należy podjąć w pierwszej kolejności, gdy w czasie jazdy zaświeci się na czerwono lampka kontrolna ciśnienia oleju silnikowego?|C|specialized|1|\N|Kontynuować jazdę ze zmniejszoną prędkością.|Zwiększyć obroty silnika.|Zatrzymać pojazd i wyłączyć silnik.
-4600|Czy numer telefonu 112 jest ogólnopolskim numerem alarmowym dla wszystkich służb ratowniczych?|1|basic|1|\N|\N|\N|\N
+4600|Czy numer telefonu 112 jest ogólnopolskim numerem alarmowym dla wszystkich służb ratowniczych?|1|specialized|1|\N|\N|\N|\N
 6316|Czy spożycie amfetaminy może zwiększać skłonność kierowcy do ryzykownych i agresywnych zachowań?|1|basic|2|1C206.jpg|\N|\N|\N
 6317|Czy zażycie leków uspokajających i nasennych, może zaburzać u kierującego kontrolę toru jazdy?|1|basic|2|1C207.jpg|\N|\N|\N
 6318|Czy spożyty alkohol wpływa na zmianę pola widzenia kierującego pojazdem?|1|basic|2|\N|\N|\N|\N

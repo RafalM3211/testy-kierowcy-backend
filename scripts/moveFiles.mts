@@ -3,8 +3,8 @@ import path from "path";
 
 const fileList = ["GM_W16(323).wmv"]; // put files here
 
-const sourceDir = "C:\\Users\\cyrax\\Downloads\\db";
-const destDir = "C:\\Users\\cyrax\\Documents\\testy-kierowcy-media";
+const sourceDir = "C:\\path\\to\\your\\directory";
+const destDir = "C:\\path\\to\\your\\directory";
 
 function moveFile(fileName: any) {
   const sourcePath = path.join(sourceDir, fileName);

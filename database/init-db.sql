@@ -12,6 +12,12 @@ CREATE TABLE IF NOT EXISTS questions(
     "C" VARCHAR
 );
 
+CREATE TABLE IF NOT EXISTS questions_categories(
+    "question_id" SMALLINT ,
+    "category" VARCHAR(2) NOT NULL,
+    CONSTRAINT fk_question FOREIGN KEY(question_id) REFERENCES questions(id)
+);
+
 CREATE TABLE IF NOT EXISTS users(
     "id" SERIAL PRIMARY KEY,
     "email" VARCHAR NOT NULL UNIQUE,
@@ -29,6 +35,7 @@ CREATE TABLE IF NOT EXISTS users_questions_answer(
 
 
 COPY questions FROM '/data-import/questions.txt' WITH DELIMITER '|';
+COPY questions_categories FROM '/data-import/questions_categories.txt' WITH DELIMITER '|';
 COPY users FROM '/data-import/users.txt' WITH DELIMITER '|';
 COPY users_questions_answer FROM '/data-import/users_questions_answer.txt' WITH DELIMITER '|';
 SELECT setval('users_id_seq', (SELECT MAX(id) FROM users));

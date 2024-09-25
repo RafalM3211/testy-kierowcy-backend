@@ -21,7 +21,9 @@ async function query<T extends QueryResultRow>(
 //todo: przeniesc funkcje ponizej do osobnych plikow query w danych folderach z featurow.
 
 export async function getQuestionsWhere(conditions: string, values?: any[]) {
-  const sql = "SELECT * FROM questions WHERE " + conditions;
+  const sql =
+    "SELECT * FROM (questions INNER JOIN questions_categories ON id=question_id) WHERE " +
+    conditions;
   const res = await query<RawQuestionRecord>(sql, values);
   const questions = res.rows;
 

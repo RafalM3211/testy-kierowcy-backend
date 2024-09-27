@@ -51,10 +51,10 @@ async function drawExamQuestions(
   const rawFinalQuestions: RawQuestionRecord[] = [];
 
   for await (const { count, value: questionValue } of NvalueQestionsCount) {
-    const allQuestions = await getQuestionsWhere("type=$1 AND value=$2", [
-      type,
-      questionValue,
-    ]);
+    const allQuestions = await getQuestionsWhere(
+      "type=$1 AND value=$2 AND category=$3",
+      [type, questionValue, "B"]
+    );
     const countedQuestions = drawNQuestionsFrom(count, allQuestions);
 
     rawFinalQuestions.push(...countedQuestions);

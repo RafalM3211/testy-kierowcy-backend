@@ -27,7 +27,6 @@
     "build-server": "tsc --outdir build",
     "server": "ts-node --esm src/server/server.mts",
     "convert-wmv": "scripts\\conv.bat",
-    "extract-excel-db": "ts-node --esm scripts/extractExcel.mts",
     "export-excel-db": "ts-node --esm scripts/excelToTxt.mts"
   },
   "eslintConfig": {

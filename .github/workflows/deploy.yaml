@@ -32,5 +32,5 @@ jobs:
           remote-port: ${{ secrets.SSH_PORT }}
           remote-user: ${{ secrets.FTP_USERNAME }}
           remote-path: ./sites/testy-kierowcy/
-          artifacts: true
           sync: full
+          artifacts: true

@@ -19,4 +19,4 @@ jobs:
         run: npm install
 
       - name: Compile TypeScript
-        run: npm run build
+        run: npm run build-server

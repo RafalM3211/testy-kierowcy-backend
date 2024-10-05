@@ -20,7 +20,7 @@ async function query<T extends QueryResultRow>(
 //todo: rozdzielic query na insertQuery i query. Query to bedzie to co powyżej a insertQuery bedzie robil dodatkowo sanitacje inputa.
 //todo: przeniesc funkcje ponizej do osobnych plikow query w danych folderach z featurow.
 
-//test deploy
+//test deploy 2
 
 export async function getQuestionsWhere(conditions: string, values?: any[]) {
   const sql =

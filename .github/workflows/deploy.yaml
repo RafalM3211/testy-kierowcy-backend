@@ -21,7 +21,7 @@ jobs:
       - name: Compile TypeScript
         run: npm run build-server
 
-      - name: Deploy to FTP
+      - name: Deploy to SFTP
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
           server: 146.59.44.153

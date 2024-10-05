@@ -1,8 +1,6 @@
 name: Deploy to FTP
 
-on:
-  push:
-    branches: -actions-test
+on: [push]
 
 jobs:
   build:

@@ -1,6 +1,8 @@
 name: Deploy to FTP
 
-on: [push]
+on:
+  push:
+    branches: [actions-test]
 
 jobs:
   build:
@@ -29,5 +31,5 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           username: ${{ secrets.FTP_USERNAME }}
           remote_path: ./sites/testy-kierowcy/
-          local_path: ./build/
+          local_path: ./
           sftp_only: true

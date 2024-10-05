@@ -21,9 +21,6 @@ jobs:
       - name: Compile TypeScript
         run: npm run build-server
 
-      - name: Debug
-        run: echo ${{ secrets.SSH_PORT }} \n ${{ secrets.FTP_USERNAME }} \n ${{ secrets.SSH_PRIVATE_KEY }} \n
-
       - name: Deploy to FTP
         uses: SamKirkland/web-deploy@v1
         with:

@@ -22,11 +22,12 @@ jobs:
         run: npm run build-server
 
       - name: Deploy to FTP
-        uses: SamKirkland/web-deploy@v1
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
-          target-server: 146.59.44.153
-          private-ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          ssh-port: ${{ secrets.SSH_PORT }}
-          remote-user: ${{ secrets.FTP_USERNAME }}
-          destination-path: ~/sites/testy-kierowcy/
-          source-path: ./build/
+          server: 146.59.44.153
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.FTP_USERNAME }}
+          remote_path: ~/sites/testy-kierowcy/
+          local_path: ./build/
+          sftp_only: true

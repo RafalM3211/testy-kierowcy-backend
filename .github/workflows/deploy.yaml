@@ -28,6 +28,6 @@ jobs:
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           username: ${{ secrets.FTP_USERNAME }}
-          remote_path: ~/sites/testy-kierowcy/
+          remote_path: ./sites/testy-kierowcy/
           local_path: ./build/
           sftp_only: true

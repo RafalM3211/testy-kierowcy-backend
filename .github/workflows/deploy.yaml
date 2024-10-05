@@ -24,7 +24,7 @@ jobs:
         run: npm run build-server
 
       - name: SFTP deploy
-        uses: milanmk/actions-file-deployer@master
+        uses: milanmk/actions-file-deployer@1.15
         with:
           remote-protocol: "sftp"
           remote-host: "146.59.44.153"

@@ -34,3 +34,4 @@ jobs:
           remote-path: "sites/testy-kierowcy/"
           sync: "full"
           artifacts: true
+          debug: true

@@ -33,7 +33,7 @@ jobs:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           remote-port: ${{ secrets.SSH_PORT }}
           remote-user: ${{ secrets.FTP_USERNAME }}
-          remote-path: "/home/deploy/sites/testy-kierowcy/"
+          remote-path: "/sites/testy-kierowcy/"
           local-path: "./build"
           sync: "full"
           artifacts: true

@@ -26,11 +26,11 @@ jobs:
       - name: SFTP deploy
         uses: milanmk/actions-file-deployer@master
         with:
-          remote-protocol: sftp
-          remote-host: 146.59.44.153
+          remote-protocol: "sftp"
+          remote-host: "146.59.44.153"
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           remote-port: ${{ secrets.SSH_PORT }}
           remote-user: ${{ secrets.FTP_USERNAME }}
-          remote-path: ./sites/testy-kierowcy/
-          sync: full
+          remote-path: "sites/testy-kierowcy/"
+          sync: "full"
           artifacts: true

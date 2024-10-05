@@ -19,3 +19,5 @@ All official driving license question medias are stored on [goverment driving li
 ### `npm run build-server`
 
 Builds the app for production to the `build` folder
+
+[<img alt="Deployed with web deploy" src="https://img.shields.io/badge/Deployed With-web deploy-%3CCOLOR%3E?style=for-the-badge&color=0077b6">](https://github.com/SamKirkland/web-deploy)

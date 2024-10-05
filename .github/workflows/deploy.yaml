@@ -20,3 +20,13 @@ jobs:
 
       - name: Compile TypeScript
         run: npm run build-server
+
+      - name: Deploy to FTP
+        uses: SamKirkland/web-deploy@v1
+        with:
+          target-server: 146.59.44.153
+          private-ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-port: ${{ secrets.SSH_PORT }}
+          remote-user: ${{ secrets.FTP_USERNAME }}
+          destination-path: ~/sites/testy-kierowcy/
+          source-path: ./build/

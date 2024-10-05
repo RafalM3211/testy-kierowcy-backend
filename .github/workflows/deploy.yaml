@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -24,12 +26,12 @@ jobs:
         run: npm run build-server
 
       - name: Deploy to SFTP
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        uses: milanmk/actions-file-deployer@master
         with:
-          server: 146.59.44.153
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: ${{ secrets.SSH_PORT }}
-          username: ${{ secrets.FTP_USERNAME }}
-          remote_path: ./sites/testy-kierowcy/
-          local_path: ./
-          sftp_only: true
+          remote-protocol: sftp
+          remote-host: 146.59.44.153
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          remote-port: ${{ secrets.SSH_PORT }}
+          remote-user: ${{ secrets.FTP_USERNAME }}
+          remote-path: ./sites/testy-kierowcy/
+          local-path: ./

@@ -36,4 +36,4 @@ jobs:
           remote-path: ./sites/testy-kierowcy/
           local-path: ./
           sync: delta
-          sync-delta-excludes: "README.md tsconfig.json package.json package-lock.json .gitignore node_modules/ scripts/ src/ .vscode/ .github/ .git/"
+          sync-delta-excludes: README.md

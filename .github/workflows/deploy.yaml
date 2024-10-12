@@ -34,5 +34,5 @@ jobs:
           remote-port: ${{ secrets.SSH_PORT }}
           remote-user: ${{ secrets.FTP_USERNAME }}
           remote-path: /sites/testy-kierowcy/
-          sync: full
+          sync: delta
           sync-delta-excludes: "README.md tsconfig.json package.json package-lock.json .gitignore node_modules/ scripts/ src/ .vscode/ .github/ .git/"

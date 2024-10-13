@@ -1,0 +1,38 @@
+name: Deploy to FTP
+
+on:
+  push:
+    branches: [master, actions-test]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18.x"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Compile TypeScript
+        run: npm run build-server
+
+      - name: SFTP deploy
+        uses: milanmk/actions-file-deployer@1.15
+        with:
+          remote-protocol: "sftp"
+          remote-host: "146.59.44.153"
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          remote-port: ${{ secrets.SSH_PORT }}
+          remote-user: ${{ secrets.FTP_USERNAME }}
+          remote-path: /sites/testy-kierowcy/
+          sync: delta
+          sync-delta-excludes: "README.md tsconfig.json package.json package-lock.json .gitignore node_modules/ scripts/ src/ .vscode/ .github/ .git/"

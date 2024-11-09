@@ -25,7 +25,7 @@
   },
   "scripts": {
     "build-server": "tsc --outdir build",
-    "server": "ts-node --esm src/server/server.mts",
+    "server": "node --no-warnings=ExperimentalWarning --loader ts-node/esm src/server/server.mts",
     "convert-wmv": "scripts\\conv.bat",
     "export-excel-db": "ts-node --esm scripts/excelToTxt.mts"
   },

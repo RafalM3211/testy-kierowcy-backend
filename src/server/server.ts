@@ -1,10 +1,10 @@
 import express from "express";
-import env from "./env.mjs";
+import env from "./env";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import questions from "./question/routes.mjs";
-import media from "./media/routes.mjs";
-import users from "./users/routes.mjs";
+import questions from "./question/routes";
+import media from "./media/routes";
+import users from "./users/routes";
 
 console.log("START");
 

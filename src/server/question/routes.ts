@@ -3,7 +3,7 @@ import {
   getAnswersStatistics,
   getExamQuestions,
   saveQuestionAnswer,
-} from "./question.mjs";
+} from "./question";
 
 const router = Router();
 

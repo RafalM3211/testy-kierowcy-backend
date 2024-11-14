@@ -3,8 +3,8 @@ import type {
   Question,
   SpecializedQuestion,
 } from "../../types/globalTypes";
-import { addPropToObject } from "../helpers.mjs";
-import type { ABCanswers, RawQuestionRecord } from "../types.mjs";
+import { addPropToObject } from "../helpers";
+import type { ABCanswers, RawQuestionRecord } from "../types";
 
 type PartiallyProcessedQuestion = Partial<RawQuestionRecord> & {
   correctAnswer: Question["correctAnswer"];

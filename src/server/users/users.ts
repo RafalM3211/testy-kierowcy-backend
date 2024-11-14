@@ -1,5 +1,5 @@
-import { getUsersWhere, insertUser } from "../db/dbApi.mjs";
-import { withoutProperty } from "../helpers.mjs";
+import { getUsersWhere, insertUser } from "../db/dbApi";
+import { withoutProperty } from "../helpers";
 
 import type { User } from "../../types/globalTypes";
 

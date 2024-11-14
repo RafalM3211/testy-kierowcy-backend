@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import env from "../env.mjs";
+import env from "../env";
 import type { User } from "../../types/globalTypes";
 import type { CookieOptions, Request } from "express";
 

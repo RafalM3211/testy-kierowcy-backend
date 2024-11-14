@@ -1,7 +1,7 @@
 import dotEnv from "dotenv";
 import pg from "pg";
 import type { QueryResultRow, QueryResult } from "pg";
-import type { RawQuestionRecord, UserWithPassword } from "../types.mjs";
+import type { RawQuestionRecord, UserWithPassword } from "../types";
 import { AnswersStatistics, Question, User } from "../../types/globalTypes";
 
 dotEnv.config();

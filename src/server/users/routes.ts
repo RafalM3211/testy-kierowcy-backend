@@ -1,15 +1,15 @@
 import Router from "express-promise-router";
-import { addUser, getUserByEmail, getUserById } from "./users.mjs";
-import { errorMessage } from "../messages.mjs";
-import { getUserByCredentials } from "./users.mjs";
+import { addUser, getUserByEmail, getUserById } from "./users";
+import { errorMessage } from "../messages";
+import { getUserByCredentials } from "./users";
 import {
   generateToken,
   JWTCookieOptions,
   parseToken,
   sanitizeBody,
-} from "./authentication.mjs";
+} from "./authentication";
 import type { User } from "../../types/globalTypes";
-import { withoutProperty } from "../helpers.mjs";
+import { withoutProperty } from "../helpers";
 
 const router = Router();
 

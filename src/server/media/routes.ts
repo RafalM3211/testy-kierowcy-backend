@@ -1,5 +1,5 @@
 import Router from "express-promise-router";
-import { sendImage, streamVideo, allowedMediaExtensions } from "./media.mjs";
+import { sendImage, streamVideo, allowedMediaExtensions } from "./media";
 
 const router = Router();
 

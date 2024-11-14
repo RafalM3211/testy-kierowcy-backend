@@ -1,6 +1,6 @@
 import dotEnv from "dotenv";
 import type { RemoveUndefined } from "../types/utilityTypes";
-import { isObject } from "./helpers.mjs";
+import { isObject } from "./helpers";
 
 dotEnv.config();
 

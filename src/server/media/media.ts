@@ -1,6 +1,6 @@
 import { createReadStream, statSync, existsSync } from "fs";
-import { getDirname } from "../helpers.mjs";
-import type { EndpointHandler, Res } from "../types.mjs";
+import { getDirname } from "../helpers";
+import type { EndpointHandler, Res } from "../types";
 
 export const allowedMediaExtensions = ["jpg", "mp4"];
 

@@ -1,12 +1,12 @@
-import { randomInt } from "../helpers.mjs";
-import { prepareQuestion } from "../db/dbProcessor.mjs";
+import { randomInt } from "../helpers";
+import { prepareQuestion } from "../db/dbProcessor";
 import {
   getCorrectStatisticsByUserId,
   getQuestionCount,
   getQuestionsWhere,
   saveQuestionAnswerWith,
-} from "../db/dbApi.mjs";
-import type { RawQuestionRecord, DrawQuestionConfig } from "../types.mjs";
+} from "../db/dbApi";
+import type { RawQuestionRecord, DrawQuestionConfig } from "../types";
 import type {
   AnswersStatistics,
   BasicQuestion,

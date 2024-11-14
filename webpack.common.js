@@ -14,13 +14,12 @@ module.exports={
     output: {
         path: path.resolve(__dirname, "build"),
         filename: "index.js",
-        clean: true
+        clean: true,
+        publicPath: '/',
     },
     resolve: {
         extensions: ['.mts', '.mjs', '.ts', '.js'],
     },
-    mode: "production",
-    devtool: 'source-map',
     target: "node",
     externals: {
         "pg-native": "pg-native"

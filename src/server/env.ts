@@ -5,6 +5,7 @@ import { isObject } from "./helpers";
 dotEnv.config();
 
 const env = {
+  environment: process.env.NODE_ENV,
   jwt: {
     secret: process.env.JWT_SECRET,
     audience: process.env.JWT_AUDIENCE,
@@ -12,6 +13,9 @@ const env = {
   },
   cookie: {
     secret: process.env.COOKIE_SECRET,
+  },
+  ssl: {
+    certDir: process.env.CERT_DIR,
   },
 };
 

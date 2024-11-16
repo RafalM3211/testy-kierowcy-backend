@@ -1,8 +1,7 @@
 import * as XLSX from "xlsx";
 import * as fs from "fs";
-import { getDirname } from "../src/server/helpers.mjs";
 import { Readable } from "stream";
-import type { RawQuestionRecord } from "../src/server/types.mjs";
+import type { RawQuestionRecord } from "../src/server/types";
 
 interface UntranslatedQuestionRecord {
   "Numer pytania": number;
@@ -24,8 +23,6 @@ interface FullUntranslatedQuestionRecord extends UntranslatedQuestionRecord {
 
 XLSX.set_fs(fs);
 XLSX.stream.set_readable(Readable);
-
-//const dirName = getDirname(import.meta.url);
 
 const args = process.argv;
 if (!args[2]) {

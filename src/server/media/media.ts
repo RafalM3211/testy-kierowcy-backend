@@ -1,5 +1,4 @@
 import { createReadStream, statSync, existsSync } from "fs";
-import { getDirname } from "../helpers";
 import type { EndpointHandler, Res } from "../types";
 
 export const allowedMediaExtensions = ["jpg", "mp4"];
@@ -53,11 +52,9 @@ function sendFileNotFoundError(res: Res, fileName: string) {
 }
 
 function buildFilePath(fileName: string) {
-  const srcDir = "src";
-  const currentDir = getDirname(import.meta.url);
-  const srcPath = currentDir.slice(
-    0,
-    currentDir.lastIndexOf(srcDir) + srcDir.length
-  );
-  return srcPath + "/assets/question-media/" + fileName;
+  const currentDir = __dirname;
+  const buildDir = "build";
+  const projectDir = currentDir.slice(0, currentDir.lastIndexOf(buildDir));
+
+  return projectDir + "src/assets/question-media/" + fileName;
 }

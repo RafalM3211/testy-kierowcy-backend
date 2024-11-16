@@ -31,7 +31,7 @@ if (env.environment === "production") {
     cert: fs.readFileSync(env.ssl.certDir + "fullchain.pem"),
   };
 
-  httpsServer.createServer(options, app).listen(443, () => {
+  httpsServer.createServer(options, app).listen(3001, () => {
     console.log("server is running on port 3001!");
   });
 } else {

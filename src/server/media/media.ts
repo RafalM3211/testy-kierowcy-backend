@@ -53,11 +53,11 @@ function sendFileNotFoundError(res: Res, fileName: string) {
 }
 
 function buildFilePath(fileName: string) {
-  const serverDir = "server";
+  const srcDir = "src";
   const currentDir = getDirname(import.meta.url);
-  const serverPath = currentDir.slice(
+  const srcPath = currentDir.slice(
     0,
-    currentDir.lastIndexOf(serverDir) + serverDir.length
+    currentDir.lastIndexOf(srcDir) + srcDir.length
   );
-  return serverPath + "/db/media/" + fileName;
+  return srcPath + "/assets/question-media/" + fileName;
 }

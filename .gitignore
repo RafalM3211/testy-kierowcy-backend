@@ -12,7 +12,7 @@
 /build
 
 # misc
-/src/server/db/media
+/src/assets/question-media
 /src/server/db/.~lock*
 .DS_Store
 

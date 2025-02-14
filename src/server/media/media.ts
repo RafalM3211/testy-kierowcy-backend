@@ -37,7 +37,7 @@ export const sendImage: EndpointHandler = function (req, res) {
     sendFileNotFoundError(res, fileName);
   }
   const fileSize = statSync(filePath).size;
-  res.writeHead(206, {
+  res.writeHead(200, {
     "Content-Length": fileSize,
     "Content-Type": "image/jpg",
   });

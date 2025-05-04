@@ -51,7 +51,6 @@ export function sanitize(text: string, additionalAllowedChars?: string) {
 
 export async function parseToken(token: string) {
   const payload = jwt.verify(token, env.jwt.secret);
-  console.log(payload);
   if (typeof payload === "object" && "userId" in payload) {
     const sanitizedUid = parseInt(payload.userId);
 

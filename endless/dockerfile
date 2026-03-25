@@ -1,0 +1,39 @@
+# Use the official Ubuntu image as the base image
+FROM ubuntu:latest AS build
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Install necessary dependencies
+RUN apt-get update && apt-get install -y \
+    g++ \
+    libcpprest-dev \
+    libboost-all-dev \
+    libssl-dev \
+    cmake
+
+# Copy the source code into the container
+COPY *.cpp .
+
+# Compile the C++ code
+RUN g++ -std=c++20 -fmodules-ts -c testmodule.cpp -o testmodule.o
+RUN g++ -std=c++20 -fmodules-ts -o endless endless.cpp testmodule.o -lcpprest -lboost_system -lboost_thread -lboost_chrono -lboost_random -lssl -lcrypto
+
+FROM ubuntu:latest
+WORKDIR /app
+RUN apt-get update && apt-get install -y \
+    libcpprest2.10 \
+    libboost-system1.74.0 \
+    libboost-thread1.74.0 \
+    libboost-chrono1.74.0 \ 
+    libboost-random1.74.0 \
+    libssl3 \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY --from=build /app/endless .
+
+# Expose the port on which the API will listen
+EXPOSE 8080
+
+# Command to run the API when the container starts
+CMD ["./endless"]

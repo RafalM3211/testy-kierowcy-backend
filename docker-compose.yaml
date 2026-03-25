@@ -1,5 +1,3 @@
-version: "1.0"
-
 services:
   db:
     restart: always
@@ -15,6 +13,22 @@ services:
       - ./docker/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
     ports:
       - ${PGPORT}:${PGPORT}
+  endless:
+    container_name: endless
+    image: endless
+    build:
+      context: ./endless
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    develop:
+      watch:
+        - action: rebuild
+          path: ./endless
 
 volumes:
   pgdata:
+
+networks:
+  app-network:
+    driver: bridge

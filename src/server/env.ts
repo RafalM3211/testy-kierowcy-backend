@@ -11,6 +11,10 @@ const env = {
     audience: process.env.JWT_AUDIENCE,
     issuer: process.env.JWT_ISSUER,
   },
+  endless: {
+    endlessURL: process.env.ENDLESS_URL,
+    endlessPort: process.env.ENDLESS_PORT
+  },
   cookie: {
     secret: process.env.COOKIE_SECRET,
   },

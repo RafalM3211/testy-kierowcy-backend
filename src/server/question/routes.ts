@@ -1,6 +1,7 @@
 import Router from "express-promise-router";
 import {
   getAnswersStatistics,
+  getEndlessQuestion,
   getExamQuestions,
   saveQuestionAnswer,
 } from "./question";
@@ -28,5 +29,12 @@ router.get("/answers-statistics/:userId", async (req, res) => {
 
   res.status(200).jsonp(answersStatistics);
 });
+
+router.get("/endless", async (req, res) => {
+
+  const question = await getEndlessQuestion();
+
+  res.status(200).jsonp(question);
+})
 
 export default router;

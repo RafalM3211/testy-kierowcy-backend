@@ -5,6 +5,10 @@
 #include <string>
 #include <iostream>
 
+using namespace web;
+using namespace web::http;
+using namespace web::http::experimental::listener;
+
 class EndlessAPI {
 private:
     http_listener m_listener;

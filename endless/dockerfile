@@ -18,7 +18,7 @@ COPY ./features/*.cpp ./features/*.hpp ./features/
 
 
 # Compile the C++ code
-RUN g++ -std=c++20 -fmodules-ts -c testmodule.cpp -o ./features/testmodule.o
+RUN g++ -std=c++20 -fmodules-ts -c ./features/testmodule.cpp -o ./features/testmodule.o
 RUN g++ -std=c++20 -c ./features/api.cpp -o ./features/api.o
 RUN g++ -std=c++20 -fmodules-ts -o endless endless.cpp ./features/testmodule.o ./features/api.o -lcpprest -lboost_system -lboost_thread -lboost_chrono -lboost_random -lssl -lcrypto
 

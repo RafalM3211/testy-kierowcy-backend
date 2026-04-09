@@ -3,6 +3,7 @@
 
 using namespace web;
 using namespace web::http;
+using namespace web::http::experimental::listener;
 
 EndlessAPI::EndlessAPI(const std::string& address) : m_listener(address) {
     m_listener.support(methods::GET, std::bind(&EndlessAPI::handle_get, this, std::placeholders::_1));

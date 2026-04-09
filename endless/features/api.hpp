@@ -1,5 +1,7 @@
 #pragma once
 
+#include "logger.hpp"
+
 #include <cpprest/http_listener.h>
 #include <cpprest/json.h>
 #include <string>

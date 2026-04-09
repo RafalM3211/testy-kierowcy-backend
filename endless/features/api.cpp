@@ -11,12 +11,12 @@ EndlessAPI::EndlessAPI(const std::string& address) : m_listener(address) {
 
 void EndlessAPI::start() {
     m_listener.open().then([this]() {
-        std::cout << "Listening on: " << m_listener.uri().to_string() << std::endl;
+        Logger::info("Listening on: " + m_listener.uri().to_string());
     }).wait();
 }
 
 void EndlessAPI::handle_get(http_request request) {
-    std::cout << "Received GET request" << std::endl;
+    Logger::info("Received GET request");
 
     json::value response;
     response[U("message")] = json::value::string(U("UPTATED"));

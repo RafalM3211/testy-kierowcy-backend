@@ -1,5 +1,5 @@
 # Use the official Ubuntu image as the base image
-FROM ubuntu:latest AS build
+FROM ubuntu:22.04 AS build
 
 # Set the working directory in the container
 WORKDIR /app
@@ -10,6 +10,8 @@ RUN apt-get update && apt-get install -y \
     libcpprest-dev \
     libboost-all-dev \
     libssl-dev \
+    libspdlog-dev \
+    libfmt-dev \
     cmake
 
 # Copy the source code into the container
@@ -19,18 +21,22 @@ COPY ./features/*.cpp ./features/*.hpp ./features/
 
 # Compile the C++ code
 RUN g++ -std=c++20 -fmodules-ts -c ./features/testmodule.cpp -o ./features/testmodule.o
-RUN g++ -std=c++20 -c ./features/api.cpp -o ./features/api.o
-RUN g++ -std=c++20 -fmodules-ts -o endless endless.cpp ./features/testmodule.o ./features/api.o -lcpprest -lboost_system -lboost_thread -lboost_chrono -lboost_random -lssl -lcrypto
+RUN g++ -std=c++20 -c ./features/logger.cpp -o ./features/logger.o
+RUN g++ -std=c++20 -c ./features/api.cpp -o ./features/api.o ./features/logger.o
+RUN g++ -std=c++20 -fmodules-ts -o endless endless.cpp ./features/testmodule.o ./features/api.o ./features/logger.o \
+    -lcpprest -lboost_system -lboost_thread -lboost_chrono -lboost_random -lssl -lcrypto -lspdlog -lfmt
 
-FROM ubuntu:latest
+FROM ubuntu:22.04
 WORKDIR /app
 RUN apt-get update && apt-get install -y \
     libcpprest2.10 \
     libboost-system1.74.0 \
     libboost-thread1.74.0 \
-    libboost-chrono1.74.0 \ 
+    libboost-chrono1.74.0 \
     libboost-random1.74.0 \
     libssl3 \
+    libfmt8 \
+    libspdlog1 \
     && rm -rf /var/lib/apt/lists/*
 
 COPY --from=build /app/endless .

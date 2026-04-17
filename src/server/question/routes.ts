@@ -1,10 +1,10 @@
 import Router from "express-promise-router";
 import {
   getAnswersStatistics,
-  getEndlessQuestion,
   getExamQuestions,
   saveQuestionAnswer,
 } from "./question";
+import { getEndlessQuestion } from "./endless"
 
 const router = Router();
 

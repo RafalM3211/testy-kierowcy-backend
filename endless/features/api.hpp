@@ -19,4 +19,5 @@ public:
     EndlessAPI(const std::string& address);
     void start();
     void handle_get(http_request request);
+    void handle_post(http_request request);
 };

@@ -6,7 +6,6 @@ import {
   getQuestionsWhere,
   saveQuestionAnswerWith,
 } from "../db/dbApi";
-import env from "../env"
 import type { RawQuestionRecord, DrawQuestionConfig } from "../types";
 import type {
   AnswersStatistics,
@@ -114,18 +113,4 @@ export async function getAnswersStatistics(userId: number) {
   } satisfies AnswersStatistics;
 
   return answersStatistics;
-}
-
-export async function getEndlessQuestion() {
-  try {
-    const endlessApiURL= `http://${env.endless.endlessURL}:${env.endless.endlessPort}`;
-    const res = await fetch(endlessApiURL);
-
-    const question = await res.json();
-    console.log(question);
-
-    return question;
-  } catch (err) {
-    console.log(err); 
-  }
 }

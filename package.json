@@ -24,7 +24,7 @@
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.0/xlsx-0.20.0.tgz"
   },
   "scripts": {
-    "start": "webpack --config webpack.dev.js",
+    "start": "webpack --config webpack.dev.js & npx devcontainer up",
     "build": "webpack --config webpack.prod.js",
     "server:dev": "nodemon ./build/index.js",
     "convert-wmv": "scripts\\conv.bat",
@@ -51,6 +51,7 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@devcontainers/cli": "^0.86.0",
     "babel-plugin-named-exports-order": "^0.0.2",
     "nodemon": "^3.1.7",
     "ts-loader": "^9.5.1",

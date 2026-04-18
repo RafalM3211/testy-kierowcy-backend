@@ -4,7 +4,7 @@ import {
   getExamQuestions,
   saveQuestionAnswer,
 } from "./question";
-import { getEndlessQuestion } from "./endless"
+import { getEndlessQuestion, syncQuestionsToEndless } from "./endless"
 
 const router = Router();
 
@@ -33,6 +33,13 @@ router.get("/answers-statistics/:userId", async (req, res) => {
 router.get("/endless", async (req, res) => {
 
   const question = await getEndlessQuestion();
+
+  res.status(200).jsonp(question);
+})
+
+router.get("/sync-endless", async (req, res) => {
+
+  const question = await syncQuestionsToEndless();
 
   res.status(200).jsonp(question);
 })

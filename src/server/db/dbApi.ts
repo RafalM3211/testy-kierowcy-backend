@@ -24,8 +24,8 @@ export async function getAllQuestions() {
   const sql =
     "SELECT * FROM (questions INNER JOIN questions_categories ON id=question_id)";
 
-    const res = await query<RawQuestionRecord>(sql);
-    const questions = res.rows;
+  const res = await query<RawQuestionRecord>(sql);
+  const questions = res.rows;
 
   return questions;
 }

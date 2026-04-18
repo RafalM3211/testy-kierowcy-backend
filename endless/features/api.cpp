@@ -36,7 +36,22 @@ void EndlessAPI::handle_post(http_request request) {
     Logger::info("Received POST request on " + routeName);
 
     if(path == U("/sync-questions")){
-        Logger::info("route: sync-questions");
+        Logger::debug("route: sync-questions");
+        try{
+            json::value body = request.extract_json().get();
+            Logger::debug( body.is_array()? "array": "not" );
+
+
+            request.reply(status_codes::OK, body);
+        }
+        catch (const web::json::json_exception& e) {
+            Logger::error(std::string("Invalid JSON format: ") + e.what());
+            request.reply(status_codes::BadRequest, U("Invalid JSON body"));
+        }
+        catch (const std::exception& e) {
+            Logger::error(std::string("HTTP Error extracting JSON: ") + e.what());
+            request.reply(status_codes::BadRequest, U("Failed to read JSON. Did you forget Content-Type: application/json?"));
+        }
     };
 
     json::value response;

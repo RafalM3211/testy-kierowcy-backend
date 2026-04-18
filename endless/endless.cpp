@@ -3,10 +3,8 @@
 #include <chrono>
 #include <string>
 
-#include "./features/api.hpp"
-#include "./features/logger.hpp"
-
-//import testmodule;
+#include "./features/api/api.hpp"
+#include "./features/logger/logger.hpp"
 
 
 int main() {

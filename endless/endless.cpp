@@ -3,15 +3,18 @@
 #include <chrono>
 #include <string>
 
-#include "./features/api/api.hpp"
 #include "./features/logger/logger.hpp"
+#include "./features/tokenizer/tokenizer.hpp"
+#include "./features/api/api.hpp"
 
 
 int main() {
     Logger::init();
 
+    Tokenizer tokenizer;
+
     const std::string address = "http://0.0.0.0:8080";
-    EndlessAPI api(address);
+    EndlessAPI api(address, tokenizer);
     api.start();
 
     Logger::debug("Application started");

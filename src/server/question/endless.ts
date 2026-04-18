@@ -18,28 +18,13 @@ export async function syncQuestionsToEndless(attpemt: number = 1) {
 
     try{
         const endpointName = "sync-questions";
-        const questions = getAllQuestions();
-        console.log(JSON.stringify(questions));
+        const questions = await getAllQuestions();
         const res = await fetch(endlessApiURL + endpointName , {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify([
-                {
-                    "A": null,
-                    "B": null,
-                    "C": null,
-                    "category": "A",
-                    "content": "Czy widoczgna linia wskazuje miejsce zatrzymania, które zapewnia Ci najlepszą widoczność na skrzyżowaniu?",
-                    "correctAnswer": "1",
-                    "id": 870,
-                    "media": "D16_01_org.mp4",
-                    "question_id": 870,
-                    "type": "basic",
-                    "value": 1
-                }
-            ])
+            body: JSON.stringify(questions)
         }) as any;
 
         if(res.ok) console.log("questions synchronized successfully");

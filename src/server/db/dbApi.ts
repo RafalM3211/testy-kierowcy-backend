@@ -22,7 +22,7 @@ async function query<T extends QueryResultRow>(
 
 export async function getAllQuestions() {
   const sql =
-    "SELECT * FROM (questions INNER JOIN questions_categories ON id=question_id)";
+    "SELECT * FROM questions";
 
   const res = await query<RawQuestionRecord>(sql);
   const questions = res.rows;

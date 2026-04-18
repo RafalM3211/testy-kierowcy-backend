@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../logger/logger.hpp"
+#include "../tokenizer/tokenizer.hpp"
 
 #include <cpprest/http_listener.h>
 #include <cpprest/json.h>
@@ -14,9 +15,9 @@ using namespace web::http::experimental::listener;
 class EndlessAPI {
 private:
     http_listener m_listener;
-
+    Tokenizer& tokenizer;
 public:
-    EndlessAPI(const std::string& address);
+    EndlessAPI(const std::string& address, Tokenizer& _tokenizer);
     void start();
     void handle_get(http_request request);
     void handle_post(http_request request);

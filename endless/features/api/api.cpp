@@ -4,7 +4,8 @@ using namespace web;
 using namespace web::http;
 using namespace web::http::experimental::listener;
 
-EndlessAPI::EndlessAPI(const std::string& address) : m_listener(address) {
+EndlessAPI::EndlessAPI(const std::string& address, Tokenizer& _tokenizer): 
+    m_listener(address), tokenizer(_tokenizer)  {
     m_listener.support(methods::GET, std::bind(&EndlessAPI::handle_get, this, std::placeholders::_1));
     m_listener.support(methods::POST, std::bind(&EndlessAPI::handle_post, this, std::placeholders::_1));
 }
@@ -41,8 +42,21 @@ void EndlessAPI::handle_post(http_request request) {
             json::value body = request.extract_json().get();
             Logger::debug( body.is_array()? "array": "not" );
 
+            json::array jsonQuestions = body.as_array();
 
-            request.reply(status_codes::OK, body);
+            std::vector<Question> questions;
+            for(auto& jsonQuestion: jsonQuestions){
+                Question question;
+
+                question.id = jsonQuestion.at(U("id")).as_integer();
+                question.content = jsonQuestion.at(U("content")).as_string();
+                questions.push_back(question);
+            }
+            
+            tokenizer.tokenizeQuestions(questions);
+
+            tokenizer.logTokenized();
+            request.reply(status_codes::OK);
         }
         catch (const web::json::json_exception& e) {
             Logger::error(std::string("Invalid JSON format: ") + e.what());

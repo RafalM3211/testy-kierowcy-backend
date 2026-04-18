@@ -16,14 +16,17 @@ RUN apt-get update && apt-get install -y \
 
 # Copy the source code into the container
 COPY *.cpp *.hpp ./
-COPY ./features/*.cpp ./features/*.hpp ./features/
+COPY ./features/api/*.cpp ./features/api/*.hpp ./features/api/
+COPY ./features/logger/*.cpp ./features/logger/*.hpp ./features/logger/
+COPY ./features/tokenizer/*.cpp ./features/tokenizer/*.hpp ./features/tokenizer/
+COPY ./features/types/*.hpp ./features/types/
 
 
 # Compile the C++ code
-RUN g++ -std=c++20 -fmodules-ts -c ./features/testmodule.cpp -o ./features/testmodule.o
-RUN g++ -std=c++20 -c ./features/logger.cpp -o ./features/logger.o
-RUN g++ -std=c++20 -c ./features/api.cpp -o ./features/api.o ./features/logger.o
-RUN g++ -std=c++20 -fmodules-ts -o endless endless.cpp ./features/testmodule.o ./features/api.o ./features/logger.o \
+RUN g++ -std=c++20 -c ./features/logger/logger.cpp -o ./features/logger.o
+RUN g++ -std=c++20 -c ./features/tokenizer/tokenizer.cpp -o ./features/tokenizer.o
+RUN g++ -std=c++20 -c ./features/api/api.cpp -o ./features/api.o 
+RUN g++ -std=c++20 -fmodules-ts -o endless endless.cpp ./features/api.o ./features/logger.o ./features/tokenizer.o \
     -lcpprest -lboost_system -lboost_thread -lboost_chrono -lboost_random -lssl -lcrypto -lspdlog -lfmt
 
 FROM ubuntu:22.04

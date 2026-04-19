@@ -24,6 +24,13 @@ export function randomInt(min: number, max: number) {
   return Math.floor(Math.random() * (max - min) + min);
 }
 
+export function randomAlphaNumeric(length: number){
+  let random = "";
+  for(let i=0; i<length; i+=10) random+=Math.random().toString(36).slice(2);
+
+  return random.slice(0, length);
+}
+
 export function withoutProperty<O extends object, K extends keyof O>(
   obj: O,
   property: K

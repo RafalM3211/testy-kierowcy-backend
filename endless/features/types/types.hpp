@@ -15,3 +15,8 @@ struct Question {
     std::string b;
     std::string c; */
 };
+
+struct Answer {
+    int questionId;
+    bool isAnsweredCorrectly;
+};

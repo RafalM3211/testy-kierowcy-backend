@@ -2,6 +2,8 @@
 
 #include "../logger/logger.hpp"
 #include "../tokenizer/tokenizer.hpp"
+#include "../controllers/syncController.hpp"
+#include "../controllers/questionController.hpp"
 
 #include <cpprest/http_listener.h>
 #include <cpprest/json.h>

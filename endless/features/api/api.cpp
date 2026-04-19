@@ -36,36 +36,16 @@ void EndlessAPI::handle_post(http_request request) {
     std::string routeName = utility::conversions::to_utf8string(path);
     Logger::info("Received POST request on " + routeName);
 
+    if(path == U("/get-endless-question")){
+        Logger::info("route: get-endless-question");
+        handleGetQuestion(request, tokenizer);
+        return;
+    };
+
     if(path == U("/sync-questions")){
         Logger::debug("route: sync-questions");
-        try{
-            json::value body = request.extract_json().get();
-            Logger::debug( body.is_array()? "array": "not" );
-
-            json::array jsonQuestions = body.as_array();
-
-            std::vector<Question> questions;
-            for(auto& jsonQuestion: jsonQuestions){
-                Question question;
-
-                question.id = jsonQuestion.at(U("id")).as_integer();
-                question.content = jsonQuestion.at(U("content")).as_string();
-                questions.push_back(question);
-            }
-            
-            tokenizer.tokenizeQuestions(questions);
-
-            tokenizer.logTokenized();
-            request.reply(status_codes::OK);
-        }
-        catch (const web::json::json_exception& e) {
-            Logger::error(std::string("Invalid JSON format: ") + e.what());
-            request.reply(status_codes::BadRequest, U("Invalid JSON body"));
-        }
-        catch (const std::exception& e) {
-            Logger::error(std::string("HTTP Error extracting JSON: ") + e.what());
-            request.reply(status_codes::BadRequest, U("Failed to read JSON. Did you forget Content-Type: application/json?"));
-        }
+        handleSync(request, tokenizer);
+        return;
     };
 
     json::value response;

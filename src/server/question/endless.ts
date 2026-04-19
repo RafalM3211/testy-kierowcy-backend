@@ -1,12 +1,25 @@
-import { getAllQuestions, getQuestionsWhere } from "../db/dbApi";
+import { getAllQuestions, getUserAnswers } from "../db/dbApi";
 import env from "../env"
+import { randomAlphaNumeric } from "../helpers";
 
 
 const endlessApiURL= `http://${env.endless.endlessURL}:${env.endless.endlessPort}/`
 
-export async function getEndlessQuestion(){
+export async function getEndlessQuestion(userId: number | null){
     const endpointName = "get-endless-question";
-    const res = await fetch(endlessApiURL + endpointName);
+
+    const userAnswers = userId? await getUserAnswers(userId) : null;
+
+    console.log(userAnswers);
+
+    const res = await fetch(endlessApiURL + endpointName, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-Correlation-ID": randomAlphaNumeric(10)
+        },
+        body: JSON.stringify(userAnswers)
+    });
     const question = await res.json();
 
     return question

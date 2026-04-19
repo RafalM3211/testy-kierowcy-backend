@@ -5,6 +5,7 @@ import {
   saveQuestionAnswer,
 } from "./question";
 import { getEndlessQuestion, syncQuestionsToEndless } from "./endless"
+import { parseToken } from "../users/authentication";
 
 const router = Router();
 
@@ -31,8 +32,11 @@ router.get("/answers-statistics/:userId", async (req, res) => {
 });
 
 router.get("/endless", async (req, res) => {
+  console.log("asdasdasd hhhh");
+  if (!("jwt" in req.cookies)) console.log("user not logged in");
+  const userId = req.cookies.jwt? await parseToken(req.cookies.jwt) : null;
 
-  const question = await getEndlessQuestion();
+  const question = await getEndlessQuestion(userId);
 
   res.status(200).jsonp(question);
 })

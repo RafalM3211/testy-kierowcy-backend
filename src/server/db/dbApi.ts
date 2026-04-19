@@ -58,6 +58,14 @@ export async function getQuestionCount() {
   return question_count;
 }
 
+export async function getUserAnswers( userId: User["id"]) {
+  const sql =
+    'SELECT * FROM users_questions_answer WHERE user_id=$1;';
+  const res = await query<{id: number, isAnsweredCorrectly: boolean}>(sql, [userId]);
+
+  return res.rows
+}
+
 export async function getCorrectStatisticsByUserId(
   userId: User["id"]
 ): Promise<Omit<AnswersStatistics, "unanswered">> {

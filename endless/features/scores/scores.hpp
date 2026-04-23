@@ -16,6 +16,6 @@ class ScoreEngine {
         float computeSimmilarity(Tokenized&, Tokenized&);
         void computeScores(std::vector<Answer>);
         void init();
-        
+
         void logScores();
 };

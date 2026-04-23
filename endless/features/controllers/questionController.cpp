@@ -35,4 +35,5 @@ void handleGetQuestion(http_request request, Tokenizer& tokenizer, ScoreEngine& 
     }
 
     scoreEngine.logScores();
+    scoreEngine.test();
 }

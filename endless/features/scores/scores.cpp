@@ -12,9 +12,9 @@ float ScoreEngine::computeSimmilarity(Tokenized& first, Tokenized& second){
         }
     };
 
-    int sumOfTwoSets = static_cast<int>(first.tokens.size() + second.tokens.size()) - repeatingTokens;
+    int sumOfTwoSets = (first.tokens.size() + second.tokens.size()) - repeatingTokens;
 
-    return repeatingTokens/sumOfTwoSets;
+    return (float)repeatingTokens/sumOfTwoSets;
 }
 
 void ScoreEngine::computeScores(std::vector<Answer> answers){

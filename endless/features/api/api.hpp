@@ -2,6 +2,7 @@
 
 #include "../logger/logger.hpp"
 #include "../tokenizer/tokenizer.hpp"
+#include "../scores/scores.hpp"
 #include "../controllers/syncController.hpp"
 #include "../controllers/questionController.hpp"
 
@@ -18,8 +19,9 @@ class EndlessAPI {
 private:
     http_listener m_listener;
     Tokenizer& tokenizer;
+    ScoreEngine& scoreEngine;
 public:
-    EndlessAPI(const std::string& address, Tokenizer& _tokenizer);
+    EndlessAPI(const std::string& address, Tokenizer& _tokenizer, ScoreEngine& _scoreEngine);
     void start();
     void handle_get(http_request request);
     void handle_post(http_request request);

@@ -27,6 +27,8 @@ public:
     Tokenizer() = default;
 
     void tokenizeQuestions(std::vector<Question>&);
+    std::vector<Tokenized>& getTokenizedQuestions();
+    Tokenized& getTokenizedById(int id);
 
     void logTokenized();
 };

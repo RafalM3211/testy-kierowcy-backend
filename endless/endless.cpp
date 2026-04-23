@@ -5,6 +5,7 @@
 
 #include "./features/logger/logger.hpp"
 #include "./features/tokenizer/tokenizer.hpp"
+#include "./features/scores/scores.hpp"
 #include "./features/api/api.hpp"
 
 
@@ -12,9 +13,10 @@ int main() {
     Logger::init();
 
     Tokenizer tokenizer;
+    ScoreEngine scoreEngine(tokenizer);
 
     const std::string address = "http://0.0.0.0:8080";
-    EndlessAPI api(address, tokenizer);
+    EndlessAPI api(address, tokenizer, scoreEngine);
     api.start();
 
     Logger::debug("Application started");

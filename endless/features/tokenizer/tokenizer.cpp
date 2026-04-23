@@ -40,6 +40,20 @@ void Tokenizer::tokenizeQuestions(std::vector<Question>& questions){
     }
 }
 
+std::vector<Tokenized>& Tokenizer::getTokenizedQuestions(){
+    return tokenizedQuestions;
+}
+
+Tokenized& Tokenizer::getTokenizedById(int id){
+    for(auto& tokenized: tokenizedQuestions){
+        if(id==tokenized.id) return tokenized;
+    }
+
+    std::string message = "couldn't find tokenized question with id " + id;
+    Logger::error(message);
+
+    throw message;
+}
 
 void Tokenizer::logTokenized(){
     for(const auto& question: tokenizedQuestions){

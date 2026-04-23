@@ -1,12 +1,9 @@
 #include "questionController.hpp"
-#include <cpprest/json.h>
-#include "../logger/logger.hpp"
-#include "../types/types.hpp"
 
 using namespace web;
 using namespace web::http;
 
-void handleGetQuestion(http_request request, Tokenizer& tokenizer) {
+void handleGetQuestion(http_request request, Tokenizer& tokenizer, ScoreEngine& scoreEngine) {
     try {
         json::value body = request.extract_json().get();
         json::array jsonAnswers = body.as_array();
@@ -23,6 +20,8 @@ void handleGetQuestion(http_request request, Tokenizer& tokenizer) {
             Logger::debug("Answer ID: " + std::to_string(answer.questionId) + 
                           " isCorrect: " + std::to_string(answer.isAnsweredCorrectly));
         }
+
+        scoreEngine.computeScores(answers);
         
         request.reply(status_codes::OK, U("Successfully processed answers."));
     }
@@ -34,4 +33,6 @@ void handleGetQuestion(http_request request, Tokenizer& tokenizer) {
         Logger::error(std::string("HTTP Error extracting JSON: ") + e.what());
         request.reply(status_codes::BadRequest, U("Failed to read JSON."));
     }
+
+    scoreEngine.logScores();
 }

@@ -22,8 +22,12 @@ void handleGetQuestion(http_request request, Tokenizer& tokenizer, ScoreEngine& 
         }
 
         scoreEngine.computeScores(answers);
+        int nextId = drawQuestion(scoreEngine.getScores());
+        Logger::info("Drawed question: " + std::to_string(nextId));
         
-        request.reply(status_codes::OK, U("Successfully processed answers."));
+        json::value response;
+        response[U("id")] = json::value::number(nextId);
+        request.reply(status_codes::OK, response);
     }
     catch (const web::json::json_exception& e) {
         Logger::error(std::string("Invalid JSON format: ") + e.what());
@@ -35,5 +39,4 @@ void handleGetQuestion(http_request request, Tokenizer& tokenizer, ScoreEngine& 
     }
 
     scoreEngine.logScores();
-    scoreEngine.test();
 }

@@ -32,7 +32,6 @@ router.get("/answers-statistics/:userId", async (req, res) => {
 });
 
 router.get("/endless", async (req, res) => {
-  console.log("asdasdasd hhhh");
   if (!("jwt" in req.cookies)) console.log("user not logged in");
   const userId = req.cookies.jwt? await parseToken(req.cookies.jwt) : null;
 

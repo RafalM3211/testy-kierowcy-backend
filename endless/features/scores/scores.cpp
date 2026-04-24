@@ -30,6 +30,10 @@ void ScoreEngine::computeScores(std::vector<Answer> answers){
     }
 }
 
+std::unordered_map<int, float>& ScoreEngine::getScores(){
+    return scores;
+}
+
 void ScoreEngine::init(){
     auto& tokenizedQuestions = tokenizer.getTokenizedQuestions();
     if(tokenizedQuestions.empty()) Logger::error("No tokenized questions. Ran ScoreEngine::init() too early");

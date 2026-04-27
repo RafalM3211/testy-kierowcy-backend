@@ -1,7 +1,4 @@
 #include "syncController.hpp"
-#include <cpprest/json.h>
-#include "../logger/logger.hpp"
-#include "../types/types.hpp"
 
 using namespace web;
 using namespace web::http;

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <unordered_map>
 #include <string>
 #include <sstream>
 #include <mutex>
@@ -11,14 +12,17 @@
 #include "../logger/logger.hpp"
 #include "../types/types.hpp"
 
-struct Tokenized {
-    int id;
+/* struct Tokenized {
     std::vector<std::string> tokens;
-};
+}; */
+
+typedef std::vector<std::string> Tokens;
+
+typedef std::pair<int, Tokens> Tokenized;
 
 class Tokenizer {
 private:
-    std::vector<Tokenized> tokenizedQuestions;
+    std::unordered_map<int, Tokens> tokenizedQuestions;
     mutable std::shared_mutex rw_mutex; 
 
     std::string normalizeString(const std::string&);
@@ -27,8 +31,8 @@ public:
     Tokenizer() = default;
 
     void tokenizeQuestions(std::vector<Question>&);
-    std::vector<Tokenized>& getTokenizedQuestions();
-    Tokenized& getTokenizedById(int id);
+    std::unordered_map<int, Tokens>& getTokenizedQuestions();
+    Tokens& getTokensById(int id);
 
     void logTokenized();
 };

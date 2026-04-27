@@ -5,20 +5,20 @@ ScoreEngine::ScoreEngine(Tokenizer& _tokenizer): tokenizer(_tokenizer){
 
     auto& tokenizedQuestions = tokenizer.getTokenizedQuestions();
     if(tokenizedQuestions.empty()) Logger::error("No tokenized questions. Ran ScoreEngine::init() too early");
-    for(auto& question: tokenizedQuestions){
-        scores[question.id] = 1;
+    for(auto& [id, question]: tokenizedQuestions){
+        scores[id] = 1;
     }
 }
 
-float ScoreEngine::computeSimmilarity(Tokenized& first, Tokenized& second){
+float ScoreEngine::computeSimmilarity(Tokens& first, Tokens& second){
     int repeatingTokens = 0;
-    for(auto& firstToken: first.tokens){
-        for(auto& secondToken: second.tokens){
+    for(auto& firstToken: first){
+        for(auto& secondToken: second){
             if (firstToken==secondToken) repeatingTokens++;
         }
     };
 
-    int sumOfTwoSets = (first.tokens.size() + second.tokens.size()) - repeatingTokens;
+    int sumOfTwoSets = (first.size() + second.size()) - repeatingTokens;
 
     return (float)repeatingTokens/sumOfTwoSets;
 }
@@ -26,11 +26,11 @@ float ScoreEngine::computeSimmilarity(Tokenized& first, Tokenized& second){
 void ScoreEngine::computeScores(std::vector<Answer> answers){
     for(auto& answer: answers){
         if(!answer.isAnsweredCorrectly){
-            Tokenized& answeredQuestion = tokenizer.getTokenizedById(answer.questionId);
+            Tokens& answeredQuestion = tokenizer.getTokensById(answer.questionId);
 
-            for(auto& question: tokenizer.getTokenizedQuestions()){
+            for(auto& [id, question]: tokenizer.getTokenizedQuestions()){
                 float simmilarityScore = computeSimmilarity(question, answeredQuestion);
-                scores[question.id] += simmilarityScore;
+                scores[id] += simmilarityScore;
             }
         }   
     }

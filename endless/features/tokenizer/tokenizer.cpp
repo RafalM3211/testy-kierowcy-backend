@@ -1,7 +1,5 @@
 #include "tokenizer.hpp"
 
-
-
 Tokenized Tokenizer::tokenize(Question& question){
     std::string content = normalizeString(question.content);
     std::vector<std::string> tokens;
@@ -36,32 +34,35 @@ void Tokenizer::tokenizeQuestions(std::vector<Question>& questions){
         
     tokenizedQuestions.clear();
     for(auto& question: questions){
-       tokenizedQuestions.push_back(tokenize(question));
+       tokenizedQuestions.insert(tokenize(question));
     }
 }
 
-std::vector<Tokenized>& Tokenizer::getTokenizedQuestions(){
+std::unordered_map<int, Tokens>& Tokenizer::getTokenizedQuestions(){
+    std::shared_lock lock(rw_mutex);
     return tokenizedQuestions;
 }
 
-Tokenized& Tokenizer::getTokenizedById(int id){
-    for(auto& tokenized: tokenizedQuestions){
-        if(id==tokenized.id) return tokenized;
+Tokens& Tokenizer::getTokensById(int id){
+    std::shared_lock lock(rw_mutex);
+    try{
+        return tokenizedQuestions.at(id);
     }
-
-    std::string message = "couldn't find tokenized question with id " + id;
-    Logger::error(message);
-
-    throw message;
+    catch (const std::exception& e) {
+        std::string message = "couldn't find tokenized question with id " + id;
+        Logger::error(message);
+        throw message;
+    }
 }
 
 void Tokenizer::logTokenized(){
-    for(const auto& question: tokenizedQuestions){
-        std::string tokens = "";
-        for(const auto& token: question.tokens){
-            tokens+=" " + token;
+    std::shared_lock lock(rw_mutex);
+    for(const auto& [id, tokens]: tokenizedQuestions){
+        std::string tokensString = "";
+        for(const auto& token: tokens){
+            tokensString+=" " + token;
         }
 
-        Logger::debug("TOKENIZED - id: " + std::to_string(question.id) + " tokens: " + tokens);
+        Logger::debug("TOKENIZED - id: " + std::to_string(id) + " tokens: " + tokensString);
     };
 }

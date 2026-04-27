@@ -22,14 +22,14 @@ COPY ./features/tokenizer/*.cpp ./features/tokenizer/*.hpp ./features/tokenizer/
 COPY ./features/types/*.hpp ./features/types/
 COPY ./features/controllers/*.hpp ./features/controllers/
 COPY ./features/controllers/*.cpp ./features/controllers/
-COPY ./features/scores/*.cpp ./features/scores/*.hpp ./features/scores/
+COPY ./features/scoreEngine/*.cpp ./features/scoreEngine/*.hpp ./features/scoreEngine/
 COPY ./features/drawer/*.cpp ./features/drawer/*.hpp ./features/drawer/
 
 
 # Compile the C++ code
 RUN g++ -std=c++20 -c ./features/logger/logger.cpp -o ./features/logger.o
 RUN g++ -std=c++20 -c ./features/tokenizer/tokenizer.cpp -o ./features/tokenizer.o
-RUN g++ -std=c++20 -c ./features/scores/scores.cpp -o ./features/scores.o
+RUN g++ -std=c++20 -c ./features/scoreEngine/scoreEngine.cpp -o ./features/scoreEngine.o
 RUN g++ -std=c++20 -c ./features/drawer/drawer.cpp -o ./features/drawer.o
 RUN g++ -std=c++20 -c ./features/controllers/syncController.cpp -o ./features/syncController.o
 RUN g++ -std=c++20 -c ./features/controllers/questionController.cpp -o ./features/questionController.o
@@ -38,7 +38,7 @@ RUN g++ -std=c++20 -o endless endless.cpp \
     ./features/api.o \
     ./features/logger.o \
     ./features/tokenizer.o \
-    ./features/scores.o \
+    ./features/scoreEngine.o \
     ./features/drawer.o \
     ./features/syncController.o \
     ./features/questionController.o \

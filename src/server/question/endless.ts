@@ -1,56 +1,63 @@
-import { getAllQuestions, getQuestionsWhere, getUserAnswers } from "../db/dbApi";
-import env from "../env"
+import { getQuestionsWhere, getUserAnswers } from "../db/dbApi";
+import env from "../env";
 import { randomAlphaNumeric } from "../helpers";
 
 
-const endlessApiURL= `http://${env.endless.endlessURL}:${env.endless.endlessPort}/`
+const endlessApiURL = `http://${env.endless.endlessURL}:${env.endless.endlessPort}/`;
 
-export async function getEndlessQuestion(userId: number | null){
-    const endpointName = "get-endless-question";
+export async function getEndlessQuestion(userId: number | null) {
+  const endpointName = "get-endless-question";
 
-    const userAnswers = userId? await getUserAnswers(userId) : [];
+  const userAnswers = userId ? await getUserAnswers(userId) : [];
 
-    const res = await fetch(endlessApiURL + endpointName, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "X-Correlation-ID": randomAlphaNumeric(10)
-        },
-        body: JSON.stringify(userAnswers)
-    });
-    const drawedId: {id: number} = await res.json();
-    console.log("drawed id: " + drawedId.id);
+  console.log("user: ", userId, "answers: ", userAnswers);
 
-    const question = await getQuestionsWhere("id=$1 AND category=$2", [drawedId.id, "B"]);
+  const res = await fetch(endlessApiURL + endpointName, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Correlation-ID": randomAlphaNumeric(10),
+    },
+    body: JSON.stringify(userAnswers),
+  });
+  const drawedId: { id: number } = await res.json();
+  console.log("drawed id: " + drawedId.id);
 
-    return question
+  const question = await getQuestionsWhere("id=$1 AND category=$2", [
+    drawedId.id,
+    "B",
+  ]);
+
+  return question;
 }
 
 export async function syncQuestionsToEndless(attpemt: number = 1) {
-    const timeToRetry = 2000;
-    const maxAttempts = 8;
+  const timeToRetry = 2000;
+  const maxAttempts = 8;
 
-    try{
-        const endpointName = "sync-questions";
-        const questions = await getQuestionsWhere("category=$1", ["B"]);
-        console.log("number of questions: " + questions.length);
-        const res = await fetch(endlessApiURL + endpointName , {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(questions)
-        }) as any;
+  try {
+    const endpointName = "sync-questions";
+    const questions = await getQuestionsWhere("category=$1", ["B"]);
+    console.log("number of questions: " + questions.length);
+    const res = (await fetch(endlessApiURL + endpointName, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(questions),
+    })) as any;
 
-        if(res.ok) console.log("questions synchronized successfully");
+    if (res.ok) console.log("questions synchronized successfully");
+  } catch (e) {
+    console.error(
+      `Endless service not ready yet, retrying in ${timeToRetry / 1000} seconds...`,
+    );
+    if (attpemt <= maxAttempts) {
+      setTimeout(() => {
+        syncQuestionsToEndless(++attpemt);
+      }, timeToRetry);
+    } else {
+      console.error(`Failed to sync with endless in ${maxAttempts} attempts`);
     }
-    catch (e) {
-        console.error(`Endless service not ready yet, retrying in ${timeToRetry/1000} seconds...`);
-        if(attpemt <= maxAttempts) {
-            setTimeout(()=>{syncQuestionsToEndless(++attpemt)}, timeToRetry)
-        }
-        else {
-            console.error(`Failed to sync with endless in ${maxAttempts} attempts`);
-        }
-    }
+  }
 }

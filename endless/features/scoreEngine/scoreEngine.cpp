@@ -1,7 +1,13 @@
-#include "scores.hpp"
+#include "scoreEngine.hpp"
 
 ScoreEngine::ScoreEngine(Tokenizer& _tokenizer): tokenizer(_tokenizer){
     scores.reserve(3000);   //expected question amount to env
+
+    auto& tokenizedQuestions = tokenizer.getTokenizedQuestions();
+    if(tokenizedQuestions.empty()) Logger::error("No tokenized questions. Ran ScoreEngine::init() too early");
+    for(auto& question: tokenizedQuestions){
+        scores[question.id] = 1;
+    }
 }
 
 float ScoreEngine::computeSimmilarity(Tokenized& first, Tokenized& second){
@@ -33,15 +39,6 @@ void ScoreEngine::computeScores(std::vector<Answer> answers){
 std::unordered_map<int, float>& ScoreEngine::getScores(){
     return scores;
 }
-
-void ScoreEngine::init(){
-    auto& tokenizedQuestions = tokenizer.getTokenizedQuestions();
-    if(tokenizedQuestions.empty()) Logger::error("No tokenized questions. Ran ScoreEngine::init() too early");
-    for(auto& question: tokenizedQuestions){
-        scores[question.id] = 0;
-    }
-}
-
 
 void ScoreEngine::logScores(){
     Logger::debug("Buckets: " + std::to_string(scores.bucket_count()));

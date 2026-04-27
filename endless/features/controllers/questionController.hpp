@@ -6,7 +6,7 @@
 #include "../tokenizer/tokenizer.hpp"
 #include "../logger/logger.hpp"
 #include "../types/types.hpp"
-#include "../scores/scores.hpp"
+#include "../scoreEngine/scoreEngine.hpp"
 #include "../drawer/drawer.hpp"
 
-void handleGetQuestion(web::http::http_request, Tokenizer&, ScoreEngine&);
+void handleGetQuestion(web::http::http_request, Tokenizer&);

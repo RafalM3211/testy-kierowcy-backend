@@ -3,8 +3,10 @@
 using namespace web;
 using namespace web::http;
 
-void handleGetQuestion(http_request request, Tokenizer& tokenizer, ScoreEngine& scoreEngine) {
+void handleGetQuestion(http_request request, Tokenizer& tokenizer) {
     try {
+        ScoreEngine scoreEngine(tokenizer);
+
         json::value body = request.extract_json().get();
         json::array jsonAnswers = body.as_array();
 
@@ -24,6 +26,7 @@ void handleGetQuestion(http_request request, Tokenizer& tokenizer, ScoreEngine& 
         scoreEngine.computeScores(answers);
         int nextId = drawQuestion(scoreEngine.getScores());
         Logger::info("Drawed question: " + std::to_string(nextId));
+        scoreEngine.logScores();
         
         json::value response;
         response[U("id")] = json::value::number(nextId);
@@ -37,6 +40,4 @@ void handleGetQuestion(http_request request, Tokenizer& tokenizer, ScoreEngine& 
         Logger::error(std::string("HTTP Error extracting JSON: ") + e.what());
         request.reply(status_codes::BadRequest, U("Failed to read JSON."));
     }
-
-    scoreEngine.logScores();
 }

@@ -4,8 +4,8 @@ using namespace web;
 using namespace web::http;
 using namespace web::http::experimental::listener;
 
-EndlessAPI::EndlessAPI(const std::string& address, Tokenizer& _tokenizer, ScoreEngine& _scoreEngine): 
-    m_listener(address), tokenizer(_tokenizer), scoreEngine(_scoreEngine)  {
+EndlessAPI::EndlessAPI(const std::string& address, Tokenizer& _tokenizer): 
+    m_listener(address), tokenizer(_tokenizer) {
     m_listener.support(methods::GET, std::bind(&EndlessAPI::handle_get, this, std::placeholders::_1));
     m_listener.support(methods::POST, std::bind(&EndlessAPI::handle_post, this, std::placeholders::_1));
 }
@@ -38,14 +38,13 @@ void EndlessAPI::handle_post(http_request request) {
 
     if(path == U("/get-endless-question")){
         Logger::info("route: get-endless-question");
-        handleGetQuestion(request, tokenizer, scoreEngine);
+        handleGetQuestion(request, tokenizer);
         return;
     };
 
     if(path == U("/sync-questions")){
         Logger::debug("route: sync-questions");
         handleSync(request, tokenizer);
-        scoreEngine.init();
         return;
     };
 

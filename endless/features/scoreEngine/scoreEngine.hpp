@@ -13,7 +13,7 @@ class ScoreEngine {
     public:
         ScoreEngine(Tokenizer&);
 
-        float computeSimmilarity(Tokens&, Tokens&);
+        float computeSimmilarity(const Tokens&, const Tokens&);
         void computeScores(std::vector<Answer>);
         std::unordered_map<int, float>& getScores();
 

@@ -12,10 +12,6 @@
 #include "../logger/logger.hpp"
 #include "../types/types.hpp"
 
-/* struct Tokenized {
-    std::vector<std::string> tokens;
-}; */
-
 typedef std::vector<std::string> Tokens;
 
 typedef std::pair<int, Tokens> Tokenized;
@@ -31,8 +27,14 @@ public:
     Tokenizer() = default;
 
     void tokenizeQuestions(std::vector<Question>&);
-    std::unordered_map<int, Tokens>& getTokenizedQuestions();
-    Tokens& getTokensById(int id);
+    
+    template<typename Func>
+    void withAllTokenized(Func action) const {
+        std::shared_lock lock(rw_mutex);
+        action(tokenizedQuestions); 
+    };
+
+    Tokens getTokensById(int id);
 
     void logTokenized();
 };

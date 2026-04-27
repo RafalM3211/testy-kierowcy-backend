@@ -2,7 +2,6 @@ import { getQuestionsWhere, getUserAnswers } from "../db/dbApi";
 import env from "../env";
 import { randomAlphaNumeric } from "../helpers";
 
-//asdt
 
 const endlessApiURL = `http://${env.endless.endlessURL}:${env.endless.endlessPort}/`;
 

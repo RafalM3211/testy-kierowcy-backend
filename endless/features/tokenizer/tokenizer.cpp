@@ -38,12 +38,18 @@ void Tokenizer::tokenizeQuestions(std::vector<Question>& questions){
     }
 }
 
-std::unordered_map<int, Tokens>& Tokenizer::getTokenizedQuestions(){
+/* std::unordered_map<int, Tokens>& Tokenizer::getTokenizedQuestions(){
     std::shared_lock lock(rw_mutex);
     return tokenizedQuestions;
-}
+} */
 
-Tokens& Tokenizer::getTokensById(int id){
+/* template<typename Func>
+void Tokenizer::withAllTokenized(Func action) {
+    std::shared_lock lock(rw_mutex);
+    action(tokenizedQuestions); 
+}
+ */
+Tokens Tokenizer::getTokensById(int id){
     std::shared_lock lock(rw_mutex);
     try{
         return tokenizedQuestions.at(id);

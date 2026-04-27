@@ -3,14 +3,15 @@
 ScoreEngine::ScoreEngine(Tokenizer& _tokenizer): tokenizer(_tokenizer){
     scores.reserve(3000);   //expected question amount to env
 
-    auto& tokenizedQuestions = tokenizer.getTokenizedQuestions();
-    if(tokenizedQuestions.empty()) Logger::error("No tokenized questions. Ran ScoreEngine::init() too early");
-    for(auto& [id, question]: tokenizedQuestions){
-        scores[id] = 1;
-    }
+    tokenizer.withAllTokenized([&](const std::unordered_map<int, Tokens>& tokenizedQuestions){
+        if(tokenizedQuestions.empty()) Logger::error("No tokenized questions. Ran ScoreEngine::init() too early");
+        for(auto& [id, _]: tokenizedQuestions){
+            scores[id] = 1;
+        }
+    });    
 }
 
-float ScoreEngine::computeSimmilarity(Tokens& first, Tokens& second){
+float ScoreEngine::computeSimmilarity(const Tokens& first, const Tokens& second){
     int repeatingTokens = 0;
     for(auto& firstToken: first){
         for(auto& secondToken: second){
@@ -24,16 +25,18 @@ float ScoreEngine::computeSimmilarity(Tokens& first, Tokens& second){
 }
 
 void ScoreEngine::computeScores(std::vector<Answer> answers){
-    for(auto& answer: answers){
-        if(!answer.isAnsweredCorrectly){
-            Tokens& answeredQuestion = tokenizer.getTokensById(answer.questionId);
+    tokenizer.withAllTokenized([&](const std::unordered_map<int, Tokens>& tokenizedQuestions){
+        for(auto& answer: answers){
+            if(!answer.isAnsweredCorrectly){
+                Tokens answeredQuestionTokens = tokenizer.getTokensById(answer.questionId);
 
-            for(auto& [id, question]: tokenizer.getTokenizedQuestions()){
-                float simmilarityScore = computeSimmilarity(question, answeredQuestion);
-                scores[id] += simmilarityScore;
-            }
-        }   
-    }
+                for(auto& [id, tokens]: tokenizedQuestions){
+                    float simmilarityScore = computeSimmilarity(tokens, answeredQuestionTokens);
+                    scores[id] += simmilarityScore;
+                }
+            }   
+        }
+    });
 }
 
 std::unordered_map<int, float>& ScoreEngine::getScores(){

@@ -38,7 +38,7 @@ router.get("/endless", async (req, res) => {
   const question = await getEndlessQuestion(userId);
 
   res.status(200).jsonp(question);
-})
+});
 
 router.get("/sync-endless", async (req, res) => {
 

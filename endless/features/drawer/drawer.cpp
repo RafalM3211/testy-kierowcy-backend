@@ -6,16 +6,12 @@ int drawQuestion(const std::unordered_map<int, float>& scores){
         throw "Map of questions is empty";
     }
 
-    std::vector<int> keys;
-    std::vector<double> weights;
+    auto keysView = scores | std::views::keys;
+    auto weightsView = scores | std::views::values;
 
-    keys.reserve(scores.size());
-    weights.reserve(scores.size());
+    std::vector<int> keys(keysView.begin(), keysView.end());
+    std::vector<double> weights(weightsView.begin(), weightsView.end());
 
-    for (const auto& [id, score]: scores) {
-        keys.push_back(id);
-        weights.push_back(score);
-    };
 
     thread_local static std::random_device rd;
     thread_local static std::mt19937 gen(rd());

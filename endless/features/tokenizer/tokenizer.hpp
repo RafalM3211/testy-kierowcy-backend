@@ -7,6 +7,8 @@
 #include <mutex>
 #include <shared_mutex>
 #include <regex>
+#include <algorithm>
+#include <cctype>
 #include <cpprest/json.h>
 
 #include "../logger/logger.hpp"

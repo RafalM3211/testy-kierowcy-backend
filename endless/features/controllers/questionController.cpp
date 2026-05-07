@@ -7,20 +7,33 @@ void handleGetQuestion(http_request request, Tokenizer& tokenizer) {
     try {
         ScoreEngine scoreEngine(tokenizer);
 
+        
         json::value body = request.extract_json().get();
-        json::array jsonAnswers = body.as_array();
+        Logger::debug("Raw JSON body: " + utility::conversions::to_utf8string(body.serialize()));
+
+        json::array jsonAnswers = body.at(U("userAnswers")).as_array();
+        json::array jsonPrevQuestions = body.at(U("prevQuestionsIds")).as_array();
 
         std::vector<Answer> answers;
-        for (auto& jsonAnswer : jsonAnswers) {
+        for (auto& jsonAnswer : jsonAnswers){
             Answer answer;
             answer.questionId = jsonAnswer.at(U("question_id")).as_integer();
             answer.isAnsweredCorrectly = jsonAnswer.at(U("isAnsweredCorrectly")).as_bool();
             answers.push_back(answer);
         }
+
+        std::vector<int> prevQuestionsIds;
+        for(auto& jsonPrevId: jsonPrevQuestions){
+            prevQuestionsIds.push_back(jsonPrevId.as_integer());
+        }
         
         for (auto& answer : answers) {
             Logger::debug("Answer ID: " + std::to_string(answer.questionId) + 
                           " isCorrect: " + std::to_string(answer.isAnsweredCorrectly));
+        }
+
+        for (auto& prevId : prevQuestionsIds) {
+            Logger::debug("Question ID: " + std::to_string(prevId));
         }
 
         scoreEngine.computeScores(answers);

@@ -6,6 +6,7 @@ import {
 } from "./question";
 import { getEndlessQuestion, syncQuestionsToEndless } from "./endless"
 import { parseToken } from "../users/authentication";
+import { errorMessage } from "../messages";
 
 const router = Router();
 
@@ -31,13 +32,21 @@ router.get("/answers-statistics/:userId", async (req, res) => {
   res.status(200).jsonp(answersStatistics);
 });
 
-router.get("/endless", async (req, res) => {
-  if (!("jwt" in req.cookies)) console.log("user not logged in");
-  const userId = req.cookies.jwt? await parseToken(req.cookies.jwt) : null;
+router.post("/endless", async (req, res) => {
+  try{
+    if (!("jwt" in req.cookies)) console.log("user not logged in");
+    const userId = req.cookies.jwt? await parseToken(req.cookies.jwt) : null;
+    const {prevQuestionsIds} = req.body;
 
-  const question = await getEndlessQuestion(userId);
+    const question = await getEndlessQuestion(userId, prevQuestionsIds);
 
-  res.status(200).jsonp(question);
+    res.status(200).jsonp(question);
+  }
+  catch (message: any) {
+    console.log(message);
+    res.status(500).jsonp(errorMessage(message));
+  }
+  
 });
 
 router.get("/sync-endless", async (req, res) => {

@@ -5,23 +5,32 @@ import { randomAlphaNumeric } from "../helpers";
 
 const endlessApiURL = `http://${env.endless.endlessURL}:${env.endless.endlessPort}/`;
 
-export async function getEndlessQuestion(userId: number | null) {
+export async function getEndlessQuestion(userId: number | null, prevQuestionsIds: number[]) {
   const endpointName = "get-endless-question";
 
   const userAnswers = userId ? await getUserAnswers(userId) : [];
 
   console.log("user: ", userId, "answers: ", userAnswers);
+  console.log("quesiton ids: ", prevQuestionsIds);
 
+  
   const res = await fetch(endlessApiURL + endpointName, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       "X-Correlation-ID": randomAlphaNumeric(10),
     },
-    body: JSON.stringify(userAnswers),
+    body: JSON.stringify({
+      prevQuestionsIds,
+      userAnswers
+    }),
   });
+  
+  if(!res.ok) throw await res.text();
   const drawedId: { id: number } = await res.json();
   console.log("drawed id: " + drawedId.id);
+
+  
 
   const question = await getQuestionsWhere("id=$1 AND category=$2", [
     drawedId.id,

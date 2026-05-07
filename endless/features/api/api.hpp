@@ -5,6 +5,7 @@
 #include "../scoreEngine/scoreEngine.hpp"
 #include "../controllers/syncController.hpp"
 #include "../controllers/questionController.hpp"
+#include "../helpers/helpers.hpp"
 
 #include <cpprest/http_listener.h>
 #include <cpprest/json.h>

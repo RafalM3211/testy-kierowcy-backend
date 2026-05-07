@@ -18,6 +18,7 @@ COPY ./features/ ./features/
 
 ### Builder
 RUN g++ -std=c++20 -c ./features/logger/logger.cpp -o ./features/logger.o
+RUN g++ -std=c++20 -c ./features/helpers/helpers.cpp -o ./features/helpers.o
 RUN g++ -std=c++20 -c ./features/tokenizer/tokenizer.cpp -o ./features/tokenizer.o
 RUN g++ -std=c++20 -c ./features/scoreEngine/scoreEngine.cpp -o ./features/scoreEngine.o
 RUN g++ -std=c++20 -c ./features/drawer/drawer.cpp -o ./features/drawer.o
@@ -27,6 +28,7 @@ RUN g++ -std=c++20 -c ./features/api/api.cpp -o ./features/api.o
 RUN g++ -std=c++20 -o endless endless.cpp \
     ./features/api.o \
     ./features/logger.o \
+    ./features/helpers.o \
     ./features/tokenizer.o \
     ./features/scoreEngine.o \
     ./features/drawer.o \

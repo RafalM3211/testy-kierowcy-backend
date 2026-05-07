@@ -41,9 +41,7 @@ Tokens Tokenizer::getTokensById(int id){
         return tokenizedQuestions.at(id);
     }
     catch (const std::exception& e) {
-        std::string message = "couldn't find tokenized question with id " + id;
-        Logger::error(message);
-        throw message;
+        throw CustomError{"couldn't find tokenized question with id " + id};
     }
 }
 

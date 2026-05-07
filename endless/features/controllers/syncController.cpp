@@ -31,4 +31,8 @@ void handleSync(http_request request, Tokenizer& tokenizer) {
         Logger::error(std::string("HTTP Error extracting JSON: ") + e.what());
         request.reply(status_codes::BadRequest, U("Failed to read JSON. Check Content-Type header."));
     }
+    catch (const CustomError e){
+        Logger::error(e.message, Helpers::getCorrelationId(request));
+        request.reply(status_codes::InternalError, U(e.message));
+    }
 }

@@ -8,5 +8,6 @@
 #include "../types/types.hpp"
 #include "../scoreEngine/scoreEngine.hpp"
 #include "../drawer/drawer.hpp"
+#include "../helpers/helpers.hpp"
 
 void handleGetQuestion(web::http::http_request, Tokenizer&);

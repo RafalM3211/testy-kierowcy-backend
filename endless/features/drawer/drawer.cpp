@@ -2,8 +2,7 @@
 
 int drawQuestion(const std::unordered_map<int, float>& scores){
     if (scores.empty()) {
-        Logger::error("Map of questions is empty");
-        throw "Map of questions is empty";
+        throw CustomError{"Map of questions is empty"};
     }
 
     auto keysView = scores | std::views::keys;

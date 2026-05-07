@@ -25,7 +25,7 @@ void handleGetQuestion(http_request request, Tokenizer& tokenizer) {
 
         scoreEngine.computeScores(answers);
         int nextId = drawQuestion(scoreEngine.getScores());
-        Logger::info("Drawed question: " + std::to_string(nextId));
+        Logger::debug("Drawed question: " + std::to_string(nextId));
         scoreEngine.logScores();
         
         json::value response;
@@ -39,5 +39,9 @@ void handleGetQuestion(http_request request, Tokenizer& tokenizer) {
     catch (const std::exception& e) {
         Logger::error(std::string("HTTP Error extracting JSON: ") + e.what());
         request.reply(status_codes::BadRequest, U("Failed to read JSON."));
+    }
+    catch (const CustomError e){
+        Logger::error(e.message, Helpers::getCorrelationId(request));
+        request.reply(status_codes::InternalError, U(e.message));
     }
 }

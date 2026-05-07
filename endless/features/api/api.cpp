@@ -34,10 +34,11 @@ void EndlessAPI::handle_get(http_request request) {
 void EndlessAPI::handle_post(http_request request) {
     auto path = uri::decode(request.relative_uri().path());
     std::string routeName = utility::conversions::to_utf8string(path);
-    Logger::info("Received POST request on " + routeName);
+
+    Logger::info("Received POST request on " + routeName, Helpers::getCorrelationId(request));
 
     if(path == U("/get-endless-question")){
-        Logger::info("route: get-endless-question");
+        Logger::debug("route: get-endless-question");
         handleGetQuestion(request, tokenizer);
         return;
     };

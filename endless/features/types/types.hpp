@@ -20,3 +20,7 @@ struct Answer {
     int questionId;
     bool isAnsweredCorrectly;
 };
+
+struct CustomError {
+    std::string message;
+};

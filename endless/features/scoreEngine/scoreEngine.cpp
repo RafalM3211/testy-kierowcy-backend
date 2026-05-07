@@ -5,8 +5,7 @@ ScoreEngine::ScoreEngine(Tokenizer& _tokenizer): tokenizer(_tokenizer){
 
     tokenizer.withAllTokenized([&](const std::unordered_map<int, Tokens>& tokenizedQuestions){
         if(tokenizedQuestions.empty()) {
-            std::string errorMessage = "No tokenized questions in tokenizer. Probably ran ScoreEngine constructot too early";
-            Logger::error(errorMessage);
+            throw CustomError{"No tokenized questions in tokenizer. Probably ran ScoreEngine constructot too early"};
         }
         for(auto& [id, _]: tokenizedQuestions){
             scores[id] = 1;

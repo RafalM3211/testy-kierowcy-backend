@@ -36,7 +36,9 @@ RUN g++ -std=c++20 -o endless endless.cpp \
 
 ### Tests
 RUN g++ -std=c++20 -o run_tests \
+    ./testFeatures.cpp \
     ./features/scoreEngine/scoreEngine.test.cpp \
+    ./features/tokenizer/tokenizer.test.cpp \
     ./features/scoreEngine.o \
     ./features/tokenizer.o \
     ./features/logger.o \

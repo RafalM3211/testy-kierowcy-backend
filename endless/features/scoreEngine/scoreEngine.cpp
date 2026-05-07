@@ -4,7 +4,10 @@ ScoreEngine::ScoreEngine(Tokenizer& _tokenizer): tokenizer(_tokenizer){
     scores.reserve(3000);   //expected question amount to env
 
     tokenizer.withAllTokenized([&](const std::unordered_map<int, Tokens>& tokenizedQuestions){
-        if(tokenizedQuestions.empty()) Logger::error("No tokenized questions. Ran ScoreEngine::init() too early");
+        if(tokenizedQuestions.empty()) {
+            std::string errorMessage = "No tokenized questions in tokenizer. Probably ran ScoreEngine constructot too early";
+            Logger::error(errorMessage);
+        }
         for(auto& [id, _]: tokenizedQuestions){
             scores[id] = 1;
         }

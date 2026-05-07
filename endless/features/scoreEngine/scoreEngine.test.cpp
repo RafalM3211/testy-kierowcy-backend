@@ -1,9 +1,11 @@
 #include <gtest/gtest.h>
 #include "scoreEngine.hpp"
 #include "../tokenizer/tokenizer.hpp"
+#include "../../testFeatures.hpp"
 
 TEST(scoreEngine, computesSimmilarity){
     Tokenizer tokenizer;
+    tokenizer.tokenizeQuestions(TestFeatues::questionsFixture);
     ScoreEngine scoreEngine(tokenizer);
 
     Tokens first = {"hello", "driver", "one"};
@@ -16,6 +18,7 @@ TEST(scoreEngine, computesSimmilarity){
 
 TEST(scoreEngine, computesSimmilarityWhenEqual){
     Tokenizer tokenizer;
+    tokenizer.tokenizeQuestions(TestFeatues::questionsFixture);
     ScoreEngine scoreEngine(tokenizer);
 
     Tokens first = {"hello", "driver", "one"};
@@ -28,6 +31,7 @@ TEST(scoreEngine, computesSimmilarityWhenEqual){
 
 TEST(scoreEngine, handlesZeroSimmilarity){
     Tokenizer tokenizer;
+    tokenizer.tokenizeQuestions(TestFeatues::questionsFixture);
     ScoreEngine scoreEngine(tokenizer);
 
     Tokens first = {"hello", "driver", "one"};

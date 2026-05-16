@@ -16,6 +16,8 @@ services:
   endless:
     container_name: endless
     image: endless
+    environment:
+      - QUESTION_AMOUNT=${QUESTION_AMOUNT}
     build:
       context: ./endless
       dockerfile: Dockerfile

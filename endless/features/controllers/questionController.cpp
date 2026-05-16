@@ -6,10 +6,9 @@ using namespace web::http;
 void handleGetQuestion(http_request request, Tokenizer& tokenizer) {
     try {
         ScoreEngine scoreEngine(tokenizer);
-
-        
         json::value body = request.extract_json().get();
-        Logger::debug("Raw JSON body: " + utility::conversions::to_utf8string(body.serialize()));
+
+        std::string corId = Helpers::getCorrelationId(request);
 
         json::array jsonAnswers = body.at(U("userAnswers")).as_array();
         json::array jsonPrevQuestions = body.at(U("prevQuestionsIds")).as_array();
@@ -29,16 +28,16 @@ void handleGetQuestion(http_request request, Tokenizer& tokenizer) {
         
         for (auto& answer : answers) {
             Logger::debug("Answer ID: " + std::to_string(answer.questionId) + 
-                          " isCorrect: " + std::to_string(answer.isAnsweredCorrectly));
+                          " isCorrect: " + std::to_string(answer.isAnsweredCorrectly), corId);
         }
 
         for (auto& prevId : prevQuestionsIds) {
-            Logger::debug("Question ID: " + std::to_string(prevId));
+            Logger::debug("Question ID: " + std::to_string(prevId), corId);
         }
 
         scoreEngine.computeScores(answers);
-        int nextId = drawQuestion(scoreEngine.getScores());
-        Logger::debug("Drawed question: " + std::to_string(nextId));
+        int nextId = drawQuestion(scoreEngine.getScores(), prevQuestionsIds);
+        Logger::debug("Drawed question: " + std::to_string(nextId), corId);
         scoreEngine.logScores();
         
         json::value response;
@@ -46,11 +45,11 @@ void handleGetQuestion(http_request request, Tokenizer& tokenizer) {
         request.reply(status_codes::OK, response);
     }
     catch (const web::json::json_exception& e) {
-        Logger::error(std::string("Invalid JSON format: ") + e.what());
+        Logger::error(std::string("Invalid JSON format: ") + e.what(), Helpers::getCorrelationId(request));
         request.reply(status_codes::BadRequest, U("Invalid JSON body"));
     }
     catch (const std::exception& e) {
-        Logger::error(std::string("HTTP Error extracting JSON: ") + e.what());
+        Logger::error(std::string("HTTP Error extracting JSON: ") + e.what(), Helpers::getCorrelationId(request));
         request.reply(status_codes::BadRequest, U("Failed to read JSON."));
     }
     catch (const CustomError e){

@@ -1,11 +1,14 @@
 import { getQuestionsWhere, getUserAnswers } from "../db/dbApi";
+import { prepareQuestion } from "../db/dbProcessor";
 import env from "../env";
 import { randomAlphaNumeric } from "../helpers";
 
-
 const endlessApiURL = `http://${env.endless.endlessURL}:${env.endless.endlessPort}/`;
 
-export async function getEndlessQuestion(userId: number | null, prevQuestionsIds: number[]) {
+export async function getEndlessQuestion(
+  userId: number | null,
+  prevQuestionsIds: number[],
+) {
   const endpointName = "get-endless-question";
 
   const userAnswers = userId ? await getUserAnswers(userId) : [];
@@ -13,7 +16,6 @@ export async function getEndlessQuestion(userId: number | null, prevQuestionsIds
   console.log("user: ", userId, "answers: ", userAnswers);
   console.log("quesiton ids: ", prevQuestionsIds);
 
-  
   const res = await fetch(endlessApiURL + endpointName, {
     method: "POST",
     headers: {
@@ -22,22 +24,20 @@ export async function getEndlessQuestion(userId: number | null, prevQuestionsIds
     },
     body: JSON.stringify({
       prevQuestionsIds,
-      userAnswers
+      userAnswers,
     }),
   });
-  
-  if(!res.ok) throw await res.text();
+
+  if (!res.ok) throw await res.text();
   const drawedId: { id: number } = await res.json();
   console.log("drawed id: " + drawedId.id);
 
-  
-
-  const question = await getQuestionsWhere("id=$1 AND category=$2", [
+  const questions = await getQuestionsWhere("id=$1 AND category=$2", [
     drawedId.id,
     "B",
   ]);
 
-  return question;
+  return prepareQuestion(questions[0]);
 }
 
 export async function syncQuestionsToEndless(attpemt: number = 1) {

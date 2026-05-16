@@ -9,4 +9,4 @@
 #include "../logger/logger.hpp"
 #include "../types/types.hpp"
 
-int drawQuestion(const std::unordered_map<int, float>&);
+int drawQuestion( std::unordered_map<int, float>&, std::vector<int>&);

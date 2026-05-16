@@ -24,11 +24,11 @@ void handleSync(http_request request, Tokenizer& tokenizer) {
         request.reply(status_codes::OK, response);
     }
     catch (const web::json::json_exception& e) {
-        Logger::error(std::string("Invalid JSON format: ") + e.what());
+        Logger::error(std::string("Invalid JSON format: ") + e.what(), Helpers::getCorrelationId(request));
         request.reply(status_codes::BadRequest, U("Invalid JSON body"));
     }
     catch (const std::exception& e) {
-        Logger::error(std::string("HTTP Error extracting JSON: ") + e.what());
+        Logger::error(std::string("HTTP Error extracting JSON: ") + e.what(), Helpers::getCorrelationId(request));
         request.reply(status_codes::BadRequest, U("Failed to read JSON. Check Content-Type header."));
     }
     catch (const CustomError e){

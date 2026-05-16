@@ -19,10 +19,10 @@ void EndlessAPI::start() {
 void EndlessAPI::handle_get(http_request request) {
     auto path = uri::decode(request.relative_uri().path());
     std::string routeName = utility::conversions::to_utf8string(path);
-    Logger::info("Received GET request on " + routeName);
+    Logger::info("Received GET request on " + routeName, Helpers::getCorrelationId(request));
 
     if(path == U("/get-endless-question")){
-        Logger::info("route: get-endless-question");
+        Logger::info("route: get-endless-question", Helpers::getCorrelationId(request));
     };
 
     json::value response;
@@ -38,13 +38,13 @@ void EndlessAPI::handle_post(http_request request) {
     Logger::info("Received POST request on " + routeName, Helpers::getCorrelationId(request));
 
     if(path == U("/get-endless-question")){
-        Logger::debug("route: get-endless-question");
+        Logger::debug("route: get-endless-question", Helpers::getCorrelationId(request));
         handleGetQuestion(request, tokenizer);
         return;
     };
 
     if(path == U("/sync-questions")){
-        Logger::debug("route: sync-questions");
+        Logger::debug("route: sync-questions", Helpers::getCorrelationId(request));
         handleSync(request, tokenizer);
         return;
     };

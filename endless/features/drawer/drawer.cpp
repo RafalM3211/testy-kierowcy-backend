@@ -1,8 +1,12 @@
 #include "drawer.hpp"
 
-int drawQuestion(const std::unordered_map<int, float>& scores){
+int drawQuestion( std::unordered_map<int, float>& scores, std::vector<int>& prevIds){
     if (scores.empty()) {
         throw CustomError{"Map of questions is empty"};
+    }
+
+    for(int id: prevIds){
+        scores[id] = 0;
     }
 
     auto keysView = scores | std::views::keys;

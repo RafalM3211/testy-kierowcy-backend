@@ -1,7 +1,13 @@
 #include "scoreEngine.hpp"
 
 ScoreEngine::ScoreEngine(Tokenizer& _tokenizer): tokenizer(_tokenizer){
-    scores.reserve(3000);   //expected question amount to env
+    auto envQuestionAmount = std::getenv("QUESTION_AMOUNT");
+    if(envQuestionAmount==NULL){
+        scores.reserve(3000);
+    }
+    else {
+        scores.reserve(std::stoi(envQuestionAmount)); 
+    }
 
     tokenizer.withAllTokenized([&](const std::unordered_map<int, Tokens>& tokenizedQuestions){
         if(tokenizedQuestions.empty()) {

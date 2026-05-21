@@ -12,7 +12,9 @@ void Logger::init(){
         auto console_logger = spdlog::stdout_color_mt("consolasde");
         spdlog::set_default_logger(console_logger);
         spdlog::set_pattern("[%^%l%$] %v");
-        spdlog::set_level(spdlog::level::debug); //change to info on production based on env variable in future
+        
+        bool isDev = std::getenv("NODE_ENV")!="production";
+        spdlog::set_level(isDev? spdlog::level::debug : spdlog::level::info);
     }
 }
 

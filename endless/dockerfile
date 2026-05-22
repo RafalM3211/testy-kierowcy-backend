@@ -21,11 +21,11 @@ RUN g++ -std=c++20 -c ./features/logger/logger.cpp -o ./features/logger.o
 RUN g++ -std=c++20 -c ./features/helpers/helpers.cpp -o ./features/helpers.o
 RUN g++ -std=c++20 -c ./features/tokenizer/tokenizer.cpp -o ./features/tokenizer.o
 RUN g++ -std=c++20 -c ./features/scoreEngine/scoreEngine.cpp -o ./features/scoreEngine.o
-RUN g++ -std=c++20 -c ./features/drawer/drawer.cpp -o ./features/drawer.o
+RUN g++ -std=c++20 -fmodules-ts -c ./features/drawer/drawer.cpp -o ./features/drawer.o
 RUN g++ -std=c++20 -c ./features/controllers/syncController.cpp -o ./features/syncController.o
-RUN g++ -std=c++20 -c ./features/controllers/questionController.cpp -o ./features/questionController.o
-RUN g++ -std=c++20 -c ./features/api/api.cpp -o ./features/api.o 
-RUN g++ -std=c++20 -o endless endless.cpp \
+RUN g++ -std=c++20 -fmodules-ts -c ./features/controllers/questionController.cpp -o ./features/questionController.o
+RUN g++ -std=c++20 -fmodules-ts -c ./features/api/api.cpp -o ./features/api.o 
+RUN g++ -std=c++20 -fmodules-ts -o endless endless.cpp \
     ./features/api.o \
     ./features/logger.o \
     ./features/helpers.o \
@@ -37,6 +37,7 @@ RUN g++ -std=c++20 -o endless endless.cpp \
     -lcpprest -lboost_system -lboost_thread -lboost_chrono -lboost_random -lssl -lcrypto -lspdlog -lfmt
 
 ### Tests
+
 RUN g++ -std=c++20 -o run_tests \
     ./testFeatures.cpp \
     ./features/scoreEngine/scoreEngine.test.cpp \
@@ -48,7 +49,7 @@ RUN g++ -std=c++20 -o run_tests \
     -lcpprest -lboost_system -lboost_thread -lboost_chrono -lboost_random -lssl -lcrypto \
     -lspdlog -lfmt
 
-RUN ./run_tests
+RUN ./run_tests 
 
 ### Runner
 FROM ubuntu:22.04

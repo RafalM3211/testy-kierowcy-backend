@@ -1,6 +1,15 @@
-#include "drawer.hpp"
+module;
 
-int drawQuestion( std::unordered_map<int, float>& scores, std::vector<int>& prevIds){
+#include <unordered_map>
+#include <vector>
+#include <random>
+#include <ranges>
+#include <string>
+#include "../types/types.hpp"
+
+export module Drawer;
+
+export int drawQuestion( std::unordered_map<int, float>& scores, std::vector<int>& prevIds){
     if (scores.empty()) {
         throw CustomError{"Map of questions is empty"};
     }
